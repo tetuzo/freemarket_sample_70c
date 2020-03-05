@@ -44,9 +44,7 @@
 |shipping_charges|string|null: false|
 |shipping_area|string|null: false|
 |shipping_days|string|null: false|
-|category_large_id|references|null: false, foreign_key: true|
-|category_middle_id|references|null: false, foreign_key: true|
-|category_small_id|references|null: false, foreign_key: true|
+|category_id|references|null: false, foreign_key: true|
 |size_id|references|null: false, foreign_key: true|
 |brand_id|references|null: false, foreign_key: true|
 |seller_id|references|null: false,foreign_key: true|
@@ -56,9 +54,7 @@
 - belongs_to :buyer, class_name: 'User', :foreign_key => 'buyer_id'
 - belongs_to :seller, class_name: 'User', :foreign_key => 'seller_id'
 - has_many :images dependent: :destroy
-- belongs_to :category_large
-- belongs_to :category_middle
-- belongs_to :category_small
+- belongs_to :category
 - belongs_to :brand
 - belongs_to :size
 
@@ -71,65 +67,15 @@
 ### Association
 - belongs_to :item
 
-## categorys_largeテーブル
+## categorysテーブル
 |Column|Type|Option|
 |------|----|------|
 |name|string|
 
 ### Association
 - has_many :items
-- has_many :brands, through: :brands_categorys_large
-- has_many :brands_categorys_large
-
-## categorys_middleテーブル
-|Column|Type|Option|
-|------|----|------|
-|name|string|
-
-### Association
-- has_many :items
-- has_many :brands, through: :brands_categorys_middle
-- has_many :brands_categorys_middle
-
-## categorys_smallテーブル
-|Column|Type|Option|
-|------|----|------|
-|name|string|
-
-### Association
-- has_many :items
-- has_many :brands, through: :brands_categorys_small
-- has_many :brands_categorys_small
-
-## brands_categorys_largeテーブル
-|Column|Type|Option|
-|------|----|------|
-|brand_id|references|null :false, foreign_key :true|
-|category_large_id|references|null :false, foreign_key :true|
-
-### Association
-- belongs_to :brand
-- belongs to :category_large
-
-## brands_categorys_middleテーブル
-|Column|Type|Option|
-|------|----|------|
-|brand_id|references|null :false, foreign_key :true|
-|category_middle_id|references|null :false, foreign_key :true|
-
-### Association
-- belongs_to :brand
-- belongs to :category_middle
-
-## brands_categorys_smallテーブル
-|Column|Type|Option|
-|------|----|------|
-|brand_id|references|null :false, foreign_key :true|
-|category_small_id|references|null :false, foreign_key :true|
-
-### Association
-- belongs_to :brand
-- belongs to :category_small
+- has_many :brands
+- has_ancestry
 
 ## brandsテーブル
 |Column|Type|Option|
@@ -138,17 +84,12 @@
 
 ### Association
 - has_many :items
-- has_many :category_large, through: :brands_categorys_large
-- has_many :category_middle, through: :brands_categorys_middle
-- has_many :category_small, through: :brands_categorys_small
-- has_many :brands_categorys_large
-- has_many :brands_categorys_middle
-- has_many :brands_categorys_small
+- belongs_to :category
 
 ### sizeテーブル
 |Column|Type|Option|
 |------|----|------|
-|size|string|null :false|
+|value|string|null :false|
 
 ### Association
 - has_many :items
