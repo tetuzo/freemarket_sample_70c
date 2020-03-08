@@ -27,7 +27,7 @@
               display: flex;
               justify-content: center;
               align-items: center;
-              a {
+              .icon_FURIMA {
                 width: 140px;
                 img {
                   width: 100%;
@@ -339,7 +339,6 @@
             .productList--img {
               height: 150px;
               margin: 0;
-              // z-index: auto;
               img {
                 background-color: #fff;
                 width: 100%;
@@ -413,8 +412,8 @@
 }
 
 .purchaseBtn {
-  width: 8.5%;
-  height: 16.5%;
+  width: 120px;
+  height: 120px;
   background: #3CCACE;
   text-align: center;
   border-radius: 4%;
@@ -430,7 +429,7 @@
     margin-bottom: 8px;
   }
   &__icon {
-    width: 55%;
+    width: 60%;
   }
 }
 

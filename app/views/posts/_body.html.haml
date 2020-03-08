@@ -9,10 +9,10 @@
         %br
         フリマアプリです
       .content__btn
-        %a{ href: '#' }
-          %img{ class: "aBtn", src: "/images/icon/App_Store_Badge.png" }
-        %a{ href: '#' }
-          %img{ class: "gBtn", src: "/images/icon/Google_Play_Store_Badge.png" }
+        = link_to '#' do
+          = image_tag "/images/icon/App_Store_Badge.png", class:"aBtn"
+        = link_to '#' do
+          = image_tag "/images/icon/Google_Play_Store_Badge.png", class:"gBtn"
   %section.topIntroduction
     %h2.content__subtitle
       FURIMAが選ばれる3つの理由
@@ -21,7 +21,7 @@
         .list__pict
           %span.number
             1
-          %img{ src: "/images/pict/pict-reason-01.jpg", alt: "3分ですぐに出品" }
+          = image_tag "/images/pict/pict-reason-01.jpg", alt: "3分ですぐに出品"
         %h3.list__text
           %span
             3分
@@ -32,7 +32,7 @@
         .list__pict
           %span.number
             2
-          %img{ src: "/images/pict/pict-reason-02.jpg", alt: "シンプルで使いやすい" }
+          = image_tag "/images/pict/pict-reason-02.jpg", alt: "シンプルで使いやすい"
         %h3.list__text
           %span
             シンプル
@@ -43,7 +43,7 @@
         .list__pict
           %span.number
             3
-          %img{ src: "/images/pict/pict-reason-03.jpg", alt: "手数料業界最安" }
+          = image_tag "/images/pict/pict-reason-03.jpg", alt: "手数料業界最安"
         %h3.list__text
           手数料
           %span
@@ -61,31 +61,31 @@
         %br
         ほしかったあの商品に出会えるかもしれません。
       .btn
-        %a{ href: '#' }
-          %img{ class: "aBtn", src: "/images/icon/App_Store_Badge.png" }
-        %a{ href: '#' }
-          %img{ class: "gBtn", src: "/images/icon/Google_Play_Store_Badge.png" }
+        = link_to '#' do
+          = image_tag "/images/icon/App_Store_Badge.png", class:"aBtn"
+        = link_to '#' do
+          = image_tag "/images/icon/Google_Play_Store_Badge.png", class:"gBtn" 
   %section.topKeyFeatures
     %h2.head
       FURIMAの特徴
     %ul.lists
       %li.list
         .list__pict
-          %img{ src: "/images/icon/icon-01.png", alt: "簡単に売り買いできる" }
+          = image_tag "/images/icon/icon-01.png", alt: "簡単に売り買いできる"
         %h3.list__text
           簡単に売り買いできる
         %p.list__description
           スマホひとつで、いつでもどこでも簡単に購入が可能！
       %li.list
         .list__pict
-          %img{ src: "/images/icon/icon-03.png", alt: "売上金は即日振込みに対応" }
+          = image_tag "/images/icon/icon-03.png", alt: "売上金は即日振込みに対応"
         %h3.list__text
           売上金は即日振込みに対応
         %p.list__description
           午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします!
       %li.list
         .list__pict
-          %img{ src: "/images/icon/icon-04.png", alt: "様々な支払いに対応" }
+          = image_tag "/images/icon/icon-04.png", alt: "様々な支払いに対応"
         %h3.list__text
           様々な支払いに対応
         %p.list__description
@@ -95,14 +95,14 @@
       ピックアップカテゴリー
     .productBox
       .productHead
-        %a{ href: '#' }
+        = link_to '#' do
           %h3.title
             新規投稿商品
       .productLists
         .productList
-          %a{ href: '#' }
+          = link_to '#' do
             %figure.productList--img
-              %img{ src: "/images/icon/food_nasu_nibitashi.png" }
+              = image_tag "/images/icon/food_nasu_nibitashi.png"
             .productList--body
               %h3.name
                 ナスの煮浸し
@@ -115,9 +115,9 @@
                     0
                 %p （税込）
         .productList
-          %a{ href: '#' }
+          = link_to '#' do
             %figure.productList--img
-              %img{ src: "/images/icon/food_sandwich_blt.png" }
+              = image_tag "/images/icon/food_sandwich_blt.png"
             .productList--body
               %h3.name
                 サンドイッチ
@@ -130,9 +130,9 @@
                     0
                 %p （税込）
         .productList
-          %a{ href: '#' }
+          = link_to '#' do
             %figure.productList--img
-              %img{ src: "/images/icon/food_spaghetti_neapolitan.png" }
+              = image_tag "/images/icon/food_spaghetti_neapolitan.png"
             .productList--body
               %h3.name
                 ナポリタン
@@ -149,14 +149,14 @@
       ピックアップブランド
     .productBox
       .productHead
-        %a{ href: '#' }
+        = link_to '#' do
           %h3.title
             アーカイバ
       .productLists
         .productList
-          %a{ href: '#' }
+          = link_to '#' do
             %figure.productList--img
-              %img{ src: "/images/icon/food_nasu_nibitashi.png" }
+              = image_tag "/images/icon/food_nasu_nibitashi.png"
             .productList--body
               %h3.name
                 ナスの煮浸し
@@ -169,9 +169,9 @@
                     0
                 %p （税込）
         .productList
-          %a{ href: '#' }
+          = link_to '#' do
             %figure.productList--img
-              %img{ src: "/images/icon/food_sandwich_blt.png" }
+              = image_tag "/images/icon/food_sandwich_blt.png"
             .productList--body
               %h3.name
                 サンドイッチ
@@ -184,9 +184,9 @@
                     0
                 %p （税込）
         .productList
-          %a{ href: '#' }
+          = link_to '#' do
             %figure.productList--img
-              %img{ src: "/images/icon/food_spaghetti_neapolitan.png" }
+              = image_tag "/images/icon/food_spaghetti_neapolitan.png"
             .productList--body
               %h3.name
                 ナポリタン
@@ -198,8 +198,8 @@
                     %i.fa.fa-star.likeIcon
                     0
                 %p （税込）
-%a{ href: '#' }
+= link_to '#' do
   .purchaseBtn
     %span.purchaseBtn__text
       出品する
-    %img.purchaseBtn__icon{ src: "/images/icon/icon_camera.png" }
+    = image_tag "/images/icon/icon_camera.png", class: "purchaseBtn__icon"
