@@ -1,0 +1,28 @@
+%Header.pcHeader
+  .headerInner
+    .mainHeader
+      %h1.icon
+        %a{ href: '/' }
+          %img{ src: "/images/logo/logo.png", alt: "FURIMAのアイコン" }
+      .searchBox
+        %input{ class: "searchBox--input", id: "searchInput", name: "key", placeholder: "キーワードから探す" }
+        %button{ type: "submit" }
+          .searchBox__icon
+            %img{ src: "/images/icon/icon-search 1.png" }
+    .nav
+      %ul.listsLeft
+        %li.listsLeft__item.listsLeft__item--first
+          %a{ href: '#', id: 'catBtn' }
+            カテゴリー
+        %li.listsLeft__item
+          %a{ href: '#', id: 'brandBtn' }
+            ブランド
+      %ul.listsRight
+        %li.listsRight__item.listsRight__item--login
+          %a{ href: '#', id: 'loginBtn' }
+            ログイン
+        %li.listsLeft__item.listsRight__item--new
+          %a{ href: '#', id: 'signupBtn' }
+            新規会員登録
+
+
