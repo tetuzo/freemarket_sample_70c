@@ -94,5 +94,3 @@
 
 ### Association
 - has_many :items
-
-git_rever_test
