@@ -68,3 +68,5 @@ end
 gem 'haml-rails'
 gem 'devise'
 gem 'font-awesome-sass'
+gem 'payjp'
+gem 'dotenv-rails'

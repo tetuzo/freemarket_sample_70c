@@ -1,0 +1,56 @@
+.main_content
+  .main_content__profile
+    = link_to "#", class:"main_content__profile__body" do
+      .main_content__profile__body__user-box
+        .main_content__profile__body__user-box__icon
+      .main_content__profile__body__name
+        name
+        -# current_user.name
+      .main_content__profile__body__info
+        .main_content__profile__body__info__review
+          評価
+          -# 評価数を反映させる
+        .main_content__profile__body__info__review-number
+          45
+        .main_content__profile__body__info__sell
+          出品数
+          -# 出品数を反映させる
+        .main_content__profile__body__info__sell-number
+          10
+
+
+  .tabs
+    %input#news{checked: "checked", name: "tab_news", type: "radio"}/
+    %label.tab_news{for: "news"} 
+      .classname
+        お知らせ
+
+    %input#do{name: "tab_news", type: "radio"}/
+    %label.tab_news{for: "do"} 
+      .classname
+        やることリスト
+  
+  #all_content.tab_content
+    .tab_content_box
+      .message
+        お知らせはありません
+
+  .footer
+    購入した商品
+  .tabs
+    %input#all{checked: "checked", name: "tab_item", type: "radio"}/
+    %label.tab_item{for: "all"} 
+      .classname
+        取引中
+
+    %input#finish{name: "tab_item", type: "radio"}/
+    %label.tab_item{for: "finish"} 
+      .classname
+        過去の取引
+  
+  #all_content.tab_content
+    .tab_content_box
+      .message
+        商品はありません
+
+
