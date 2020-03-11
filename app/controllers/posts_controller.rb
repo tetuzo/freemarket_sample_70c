@@ -4,6 +4,15 @@ class PostsController < ApplicationController
   def index
   end
 
+  def show
+  end
+    
+  def new
+  end
+
+  def create
+  end
+  
   private
   def post_params
     params.require(:post).permit(:title, :content).merge(user_id: current_user.id)
@@ -12,10 +21,5 @@ class PostsController < ApplicationController
   def move_to_index
     redirect_to action: :index unless user_signed_in?
   end
-
-  def new
-  end
-
-  def create
-  end
+  
 end
