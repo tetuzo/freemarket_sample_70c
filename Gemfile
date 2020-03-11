@@ -73,11 +73,7 @@ group :development, :test do
   gem 'capistrano3-unicorn'
 end
 
- 
 gem 'haml-rails'
 gem 'devise'
 gem 'font-awesome-sass'
 gem 'ancestry'
-gem 'carrierwave'
-gem 'mini_magick'
-gem 'fog-aws'
