@@ -4,15 +4,19 @@
 |Column|Type|Option|
 |------|----|------|
 |nickname|string|null: false|
-|email|stringnull: false, unique: true|
+|email|string|null: false, unique: true|
 |password|string|null: false|
 |first_name|string|null: false|
 |family_name|string|null: false|
+|first_name_kana|string|null: false|
+|family_name_kana|string|null: false|
 |post_code|integer|null: false|
-|birthday|integer|null: false|
+|birthday_year|integer|null: false|
+|birthday_month|integer|null: false|
+|birthday_day|integer|null: false|
 |prefecture|string|null: false|
 |municipality|string|null: false|
-|adress|integer|null: false|
+|address|integer|null: false|
 |buliding_name|string|null: false|
 |telephone_number|integer|null: false|
 
@@ -24,11 +28,8 @@
 ## credit_cardsテーブル
 |Column|Type|Option|
 |------|----|------|
-|card_number|integer|null: false|
-|user_name|string|null: false|
-|month|integer|null: false|
-|year|integer|null: false|
-|security_code|integer|null: false|
+|customer_id|string|null: false|
+|card_id|string|null: false|
 |user_id|references|null: false, foreign_key: true|
 
 ### Association
@@ -42,7 +43,7 @@
 |status|string|null: false|
 |price|integer|null: false|
 |shipping_charges|string|null: false|
-|shipping_area|string|null: false|
+|adress_id|references|null: false, foreign_key: true|
 |shipping_days|string|null: false|
 |category_id|references|null: false, foreign_key: true|
 |size_id|references|null: false, foreign_key: true|
@@ -71,6 +72,8 @@
 |Column|Type|Option|
 |------|----|------|
 |name|string|
+|ancestry|string|null: false|
+
 
 ### Association
 - has_many :items
@@ -87,10 +90,20 @@
 - has_many :items
 - belongs_to :category
 
-### sizeテーブル
+## sizeテーブル
 |Column|Type|Option|
 |------|----|------|
 |value|string|null :false|
 
 ### Association
 - has_many :items
+
+## shipping_originテーブル
+|Column|Type|Option|
+|------|----|------|
+|prefecture_id|integer|null: false|
+|city|string|null: false|
+
+### Association
+- extend ActiveHash::Associations::ActiveRecordExtensions
+- belongs_to_active_hash :prefecture

@@ -17,12 +17,21 @@
         %li.listsLeft__item
           = link_to '#', id: 'brandBtn' do
             ブランド
-      %ul.listsRight
-        %li.listsRight__item.listsRight__item--login
-          =link_to '#', id: 'loginBtn' do
-            ログイン
-        %li.listsLeft__item.listsRight__item--new
-          =link_to '#', id: 'signupBtn' do
-            新規会員登録
+      - if user_signed_in?
+        %ul.listsRight
+          %li.listsRight__item.listsRight__item--login
+            =link_to destroy_user_session_path, method: :delete, id: 'loginBtn' do
+              ログアウト
+          %li.listsLeft__item.listsRight__item--new
+            =link_to "#", id: 'signupBtn' do
+              マイページ
+      - else
+        %ul.listsRight
+          %li.listsRight__item.listsRight__item--login
+            =link_to new_user_session_path, id: 'loginBtn' do
+              ログイン
+          %li.listsLeft__item.listsRight__item--new
+            =link_to new_user_registration_path, id: 'signupBtn' do
+              新規会員登録
 
 

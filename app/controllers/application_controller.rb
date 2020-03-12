@@ -1,12 +1,19 @@
 class ApplicationController < ActionController::Base
+
+  before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :basic_auth,  if: :production?
+  protect_from_forgery with: :exception
+
   def after_sign_in_path_for(resource)
     users_path(resource.id)
   end
-  before_action :basic_auth,  if: :production?
-  protect_from_forgery with: :exception
-  
-  private
 
+  protected
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :family_name, :first_name, :family_name_kana, :first_name_kana, :birthday_year, :birthday_month, :birthday_day])
+  end
+
+  private
   def production?
     Rails.env.production?
   end
