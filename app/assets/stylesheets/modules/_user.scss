@@ -27,7 +27,7 @@ body {
 }
 
 .main_signup {
-  height: 1300px;
+  height: 1200px;
   width: 700px;
   margin: 0 auto;
   color: #333;
@@ -57,6 +57,7 @@ body {
           height: 50px;
           border-radius: 6px;
           border: solid 1px rgb(202, 201, 201);
+          font-size: 16px;
         }
       }
       .form-group-password {
@@ -67,6 +68,7 @@ body {
           height: 50px;
           border-radius: 6px;
           border: solid 1px rgb(202, 201, 201);
+          font-size: 16px;
         }
         .form-info-text {
           margin: 8px 0 0;
@@ -109,6 +111,7 @@ body {
         margin-top: 24px;
         h3 {
           font-weight: bold; 
+          font-size: 16px;
         }
         p {
           margin-top: 8px;
@@ -116,7 +119,7 @@ body {
         }
       }
       .form-group-name {
-        height: 100px;
+        height: 80px;
         margin-top: 24px;
         .family_name, .family_name_kana {
           width: 168px;
@@ -125,6 +128,7 @@ body {
           height: 50px;
           border-radius: 6px;
           border: solid 1px rgb(202, 201, 201);
+          font-size: 16px;
         }
         .first_name, .first_name_kana {
           width: 168px;
@@ -133,17 +137,18 @@ body {
           height: 50px;
           border-radius: 6px;
           border: solid 1px rgb(202, 201, 201);
+          font-size: 16px;
         }
       }
       .form-group-birthday {
         height: 90px;
         margin-top: 24px;
-        .field {
+        &__field {
           display: flex;
           span {
-            padding: 11px 8px 11px;
+            padding: 13px 8px 11px;
           }
-          .tag {
+          &__tag {
             width: 80px;
             height: 50px;
             display: flex;
@@ -207,7 +212,7 @@ body {
   }
 }
 .main_login {
-  height: 500px;
+  height: 470px;
   width: 450px;
   margin: 0 auto;
   color: #333;
