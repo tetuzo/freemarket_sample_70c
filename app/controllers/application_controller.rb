@@ -1,7 +1,12 @@
 class ApplicationController < ActionController::Base
+
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :basic_auth,  if: :production?
   protect_from_forgery with: :exception
+
+  def after_sign_in_path_for(resource)
+    users_path(resource.id)
+  end
 
   protected
   def configure_permitted_parameters
@@ -19,3 +24,4 @@ class ApplicationController < ActionController::Base
     end
   end
 end
+[]

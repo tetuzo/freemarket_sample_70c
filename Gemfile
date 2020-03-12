@@ -76,5 +76,8 @@ end
 gem 'haml-rails'
 gem 'devise'
 gem 'font-awesome-sass'
+gem 'payjp'
+gem 'dotenv-rails'
 gem 'ancestry'
 gem 'active_hash'
+
