@@ -16,7 +16,7 @@
 |birthday_day|integer|null: false|
 |prefecture|string|null: false|
 |municipality|string|null: false|
-|adress|integer|null: false|
+|address|integer|null: false|
 |buliding_name|string|null: false|
 |telephone_number|integer|null: false|
 
@@ -98,7 +98,7 @@
 ### Association
 - has_many :items
 
-## adressテーブル
+## addressテーブル
 |Column|Type|Option|
 |------|----|------|
 |prefecture_id|integer|null: false|
