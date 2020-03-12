@@ -98,7 +98,7 @@
 ### Association
 - has_many :items
 
-## addressテーブル
+## shipping_originテーブル
 |Column|Type|Option|
 |------|----|------|
 |prefecture_id|integer|null: false|
