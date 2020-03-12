@@ -2,12 +2,12 @@
   = render "header"
 
 
-.show__breadcrumbs
+.breadcrumbs
   FURIMA>メンズ>ジャケット/アウター>ノーカラージャケット>product2
-.showPurchus__btn
+.purchus__btn
   = link_to '#', class:"purcus__btn" do
-    %div.showPurchus__comment  出品する
-  %i.fas.fa-camera.showPurchus__icon
+    %div.purchus__comment  出品する
+  %i.fas.fa-camera.fa-3x( style = "color:white;")
 .item__details
   .item__contents
     .item__box
@@ -74,13 +74,12 @@
           %th 発送日の目安
           %td 1-2日で発送
       %ul.item__box--btn
-        .showLike__btn
+        .like__btn
           = link_to '#' do
-            %i.fas.fa-star 
-            お気に入り 0
-        .showWarning__btn
-          = link_to '#' ,class:"showWarning__btn--style" do
-            %i.fas.fa-flag 
+            %i.fas.fa-star お気に入り 0
+        .warning__btn
+          = link_to '#' ,class:"warning__btn--style" do
+            = icon("fas","flag")
             不適切な商品の通報
            
     .comments
@@ -96,19 +95,18 @@
           相手のことを考え丁寧なコメントを心がけましょう。
           %br 不快な言葉遣いなどは利用制限や退会処分となることがあります。
      
-    %ul.showPage
+    %ul.page
       = link_to '#' do
-        %li.showPage__previous 
-        %i.fas.fa-chevron-left.showIcon-previous 前の商品
+        %li.page__previous 
+        %i.fas.fa-chevron-left 
+        前の商品
       = link_to '#' do
-        %li.showPage__next 次の商品  
-        %i.fas.fa-chevron-right.showIcon-next
-
-    %ul.showOther__item
+        %li.page__next 
+        次の商品
+        %i.fas.fa-chevron-right
+    %ul.other__item
       = link_to '#' do
         %li メンズをもっと見る
-    
-
 
 
 .wrapper
