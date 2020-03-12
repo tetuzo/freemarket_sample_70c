@@ -1,21 +1,6 @@
 
 
-body{
-  font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
-}
-table th{
-  background-color: #eeeeee;
-  text-align: center;
-  width: 25%;
-}
-table th,table td{
-  border: solid 1px #dddddd;
-  padding: 0px 10px;
-  font-size: 14px;
-}
-table td{
-  background-color: #ffffff;
-}
+
 
 a{
   text-decoration: none;
@@ -23,7 +8,7 @@ a{
 }
 
 
-.breadcrumbs{
+.show__breadcrumbs{
   height: 55px;
   width: 100%;
   background-color: white;
@@ -132,7 +117,23 @@ a{
       &--info{
         height: 400px;
         width: 650px;
-        background-color: darkseagreen;
+        th,td{
+          border: solid 1px #dddddd;
+          padding: 0px 10px;
+          font-size: 14px;
+          padding-top: 10px;
+        }
+        th{
+          background-color: #eeeeee;
+          text-align: center;
+          width: 25%;
+        }
+        td{
+          background-color: #ffffff;
+          
+        }
+
+
       }
       &--btn{
         height: 80px;
@@ -141,7 +142,7 @@ a{
         margin-top: 35px;
         display: flex;
         justify-content: space-between;
-        .like__btn{
+        .showLike__btn{
           height: 40px;
           width: 150px;
           background-color: #ffffff;
@@ -152,10 +153,10 @@ a{
           line-height: 40px;
           text-align: center;
         }
-        .like__btn:hover{
+        .showLike__btn:hover{
           opacity: 0.6;
         }
-        .warning__btn{
+        .showWarning__btn{
           height: 38px;
           display: inline-block;
           border-radius: 4px;
@@ -164,13 +165,13 @@ a{
           line-height: 40px;
           padding-right: 15px;
           padding-left: 15px;
-          font-size: 14px;
           &--style{
-            font-weight: 400;
+            font-weight: normal;
             color: #333;
+            font-size: 15px;
           }
         }
-        .warning__btn:hover{
+        .showWarning__btn:hover{
           opacity: 0.6;
         }
       }
@@ -222,37 +223,49 @@ a{
           position: absolute;
           top: 240px;
           right: 150px;
-          .fa-comment{
-            color: #ffb340;
-          }
+         
         }
       }
     }
-    .page{
+    .showPage{
       height: 50px;
       width: 730px;
       display: flex;
       justify-content: space-between;
       padding: 10px;
+      
+      position: relative;
       &__previous{
         float: left;
-        font-weight: normal;
+      }
+      .showIcon-previous{
+        color: #ffb340;
+        position: absolute;
+        top: 13px;
       }
       &__next{
         float: left;
-        font-weight: normal;
-    
+        font-weight: bold;
+        font-size: 20px;  
+        padding-right: 2px;
+      }
+      .showIcon-next{
+        color: red;
+        position: absolute;
+        top: 16px;
       }
     }
-    .other__item{
-      font-size: 24px;
-      font-weight: bold;
-      margin-top: 5px;
-      margin-left: 10px;
-    }
+  .showOther__item{
+    height: 50px;
+    width: 300px;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-left: 10px;
+  }
   }
 }
-.purchus__btn{
+.showPurchus__btn{
   width: 120px;
   height: 120px;
   background: #3CCACE;
@@ -262,8 +275,18 @@ a{
   right: 32px;
   position: fixed;
   padding-top: 20px;
-  .purchus__comment{
+  .showPurchus__comment{
     color: #fff;
+    position: relative;
+    font-size: 18px;
+  }
+  .showPurchus__icon{
+    color: #ffffff;
+    font-size: 55px;
+    position: absolute;
+    left: 32px;
+    top: 45px;
+   
   }
 }
 
