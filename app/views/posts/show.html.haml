@@ -1,0 +1,113 @@
+.wrapper
+  = render "header"
+
+
+.breadcrumbs
+  FURIMA>メンズ>ジャケット/アウター>ノーカラージャケット>product2
+.purchus__btn
+  = link_to '#', class:"purcus__btn" do
+    %div.purchus__comment  出品する
+  %i.fas.fa-camera.fa-3x( style = "color:white;")
+.item__details
+  .item__contents
+    .item__box
+      %h2.item__box--name
+        name
+      %ul.item__box--photos
+        %li.photo__large
+          = image_tag "/images/pict/item_sample1.png", class:"photo__large"
+        %ul.photo__small
+          %li
+            = image_tag "/images/pict/item_sample2.png", class: "photo__small--left"
+          %li
+            = image_tag "/images/pict/item_sample3.png", class: "photo__small--center"
+          %li
+            = image_tag "/images/pict/item_sample4.png", class: "photo__small--right"
+      .item__box--price
+        .item__price
+          %span¥20000
+        .price__info
+          %span (税込)
+          %span 送料込み
+      .item__box--detals
+        親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の
+        二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をし
+        たと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を
+        出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降
+        りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰
+        って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰
+      %table.item__box--info
+        %tr.username
+          %th 出品者
+          %td hoge
+        %tr.item__categoly
+          %th カテゴリー
+          %td
+            = link_to '#' do
+              %ol
+                %li メンズ
+            = link_to '#' do
+              %ol
+                %li ジャケット/アウター
+            = link_to '#' do
+              %ol
+                %li ノーカラー
+        %tr.item__bland
+          %th ブランド
+          %td 
+        %tr.item__size
+          %th 商品のサイズ
+          %td 
+        %tr.item__status
+          %th 商品の状態
+          %td hoge
+        %tr.item__deli--chage
+          %th 配送料の負担
+          %td hoge
+        %tr.deli__area
+          %th 発送元の地域
+          %td
+            = link_to '#' do
+              %ol
+                %li 愛知
+        %tr.item__status
+          %th 発送日の目安
+          %td 1-2日で発送
+      %ul.item__box--btn
+        .like__btn
+          = link_to '#' do
+            %i.fas.fa-star お気に入り 0
+        .warning__btn
+          = link_to '#' ,class:"warning__btn--style" do
+            = icon("fas","flag")
+            不適切な商品の通報
+           
+    .comments
+      .form
+        .comment__form
+          = form_with model: @user do |form|
+            = form.text_area :comment, class: "comment__form--field"
+            = form.label :comment, class: "comment__form--icon" do
+              %i.fas.fa-comment
+            = form.submit "コメントする", class: "form__btn"
+          
+        .comment__attention
+          相手のことを考え丁寧なコメントを心がけましょう。
+          %br 不快な言葉遣いなどは利用制限や退会処分となることがあります。
+     
+    %ul.page
+      = link_to '#' do
+        %li.page__previous 
+        %i.fas.fa-chevron-left 
+        前の商品
+      = link_to '#' do
+        %li.page__next 
+        次の商品
+        %i.fas.fa-chevron-right
+    %ul.other__item
+      = link_to '#' do
+        %li メンズをもっと見る
+
+
+.wrapper
+  = render "footer"

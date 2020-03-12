@@ -9,4 +9,7 @@ Rails.application.routes.draw do
       post 'delete', to: 'card#delete'
     end
   end
+  
+  resources :posts, only: [:new, :create, :show]
+
 end
