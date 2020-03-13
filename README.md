@@ -43,13 +43,13 @@
 |status|string|null: false|
 |price|integer|null: false|
 |shipping_charges|string|null: false|
-|adress_id|references|null: false, foreign_key: true|
 |shipping_days|string|null: false|
 |category_id|references|null: false, foreign_key: true|
 |size_id|references|null: false, foreign_key: true|
 |brand_id|references|null: false, foreign_key: true|
 |seller_id|references|null: false,foreign_key: true|
 |buyer_id|references|null: false, foreign_key: true|
+|shipping_origin|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :buyer, class_name: 'User', :foreign_key => 'buyer_id'
