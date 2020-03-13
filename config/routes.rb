@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   end
   
   resources :posts, only: [:new, :create, :show]
-
+  # 商品購入機能はpostではなくitemコントローラーで
+  resources :items, only: [:new, :create, :show]
 end
