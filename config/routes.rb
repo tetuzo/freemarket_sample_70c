@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   end
   
   resources :posts, only: [:new, :create, :show]
+  resources :purchases, only: [:index]
 
 end
