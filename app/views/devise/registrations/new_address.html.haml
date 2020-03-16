@@ -1,0 +1,86 @@
+.wrapper
+  = render "header"
+
+.main-signup
+  %h2 発送情報登録
+  = form_for @address do |f|
+    .content
+      = render "devise/shared/error_messages", resource: @address
+
+      .content__address
+        .content__address__field
+          = f.label :name, "お名前(全角)"
+          %span.form-require 必須
+          %br/
+        .content__address__name
+          = f.text_field :destination_family_name, autofocus: true, placeholder: "例）フリマ", class: "name"
+          = f.text_field :destination_first_name, autofocus: true, placeholder: "例）太郎", class: "name"
+
+      .content__address
+        .content__address__field
+          = f.label :name_kana, "お名前(かな)"
+          %span.form-require 必須
+          %br/
+        .content__address__kana
+          = f.text_field :destination_family_name_kana, autofocus: true, placeholder: "例）ふりま", class: "kana"
+          = f.text_field :destination_first_name_kana, autofocus: true, placeholder: "例）たろう", class: "kana"
+
+      .content__address
+        .content__address__field
+          = f.label :post_code, "郵便番号"
+          %span.form-require 必須
+          %br/
+        .content__address__postcode
+          = f.text_field :post_code, autofocus: true, placeholder: "例）123-4567", class: "post_code"
+        
+      .content__address
+        .content__address__field
+          = f.label :prefecture, "都道府県"
+          %span.form-require 必須
+          %br/
+        .content__address__prefecture
+          .content__address__prefecture__tag
+            = f.select :prefecture, options_for_select(["", "北海道", "青森県", "岩手県", "宮城県", "秋田県", "山形県", "福島県", "茨城県", "栃木県", "群馬県", "埼玉県", "千葉県", "東京都", "神奈川県", "新潟県", "富山県", "石川県", "福井県", "山梨県", "長野県", "岐阜県", "静岡県", "愛知県", "三重県", "滋賀県", "京都府", "大阪府", "兵庫県", "奈良県", "和歌山県", "鳥取県", "島根県", "岡山県", "広島県", "山口県", "徳島県", "香川県", "愛媛県", "高知県", "福岡県", "佐賀県", "長崎県", "熊本県", "大分県", "宮崎県", "鹿児島県", "沖縄県"]), autofocus: true
+
+      .content__address
+        .content__address__field
+          = f.label :municipality, "市区町村"
+          %span.form-require 必須
+          %br/
+        .content__address__municipality
+          = f.text_field :municipality, autofocus: true, placeholder: "例）フリマ市フリマ区", class: "municipality"
+
+      .content__address
+        .content__address__field
+          = f.label :house_number, "番地"
+          %span.form-require 必須
+          %br/
+        .content__address__housenumber
+          = f.text_field :house_number, autofocus: true, placeholder: "例）1-1-1", class: "house_number"
+
+      .content__address
+        .content__address__field
+          = f.label :building_name, "マンション名、部屋番号"
+          %span.form-arbitrary 任意
+          %br/
+        .content__address__buildingname
+          = f.text_field :building_name, autofocus: true, placeholder: "例）フリママンション101号室", class: "building_name"
+      
+      .content__address
+        .content__address__field
+          = f.label :telephone_number, "電話番号"
+          %span.form-arbitrary 任意
+          %br/
+        .content__address__telephonenumber
+          = f.text_field :telephone_number, autofocus: true, placeholder: "例）12345678910", class: "telephone_number"
+
+      = f.submit "会員登録", class: "signup"
+
+      .content__address-terms
+        「会員登録」のボタンを押すことにより、
+        = link_to '#' do
+          利用規約
+        に同意したものとみなします。
+
+.wrapper
+  = render "footer"

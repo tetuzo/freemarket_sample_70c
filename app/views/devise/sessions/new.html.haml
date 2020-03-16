@@ -19,9 +19,10 @@
         .field
           %br/
           = f.password_field :password, placeholder: "パスワード",  autocomplete: "current-password", class: "login_field"
-        .actions
+
+      .form-group
+        .field
           = f.submit "ログイン", class:"login"
       
-
 .wrapper
   = render "devise/registrations/footer"
