@@ -52,6 +52,25 @@ ActiveRecord::Schema.define(version: 2020_03_13_031756) do
     t.index ["user_id"], name: "index_personals_on_user_id"
   end
 
+  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "image", null: false
+    t.bigint "item_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_images_on_item_id"
+  end
+
+  create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "discription", null: false
+    t.string "status", null: false
+    t.integer "price", null: false
+    t.string "shipping_charges", null: false
+    t.string "shipping_days", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -66,4 +85,5 @@ ActiveRecord::Schema.define(version: 2020_03_13_031756) do
   end
 
   add_foreign_key "cards", "users"
+  add_foreign_key "images", "items"
 end
