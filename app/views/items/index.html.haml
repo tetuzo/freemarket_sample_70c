@@ -1,0 +1,10 @@
+= link_to new_item_path do
+  出品する
+
+.content_sell_index
+  - @items.each do |i|
+    %p= i.name
+    %p= i.price 
+    %p= i.status
+
+  

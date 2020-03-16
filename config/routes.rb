@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root "posts#index"
   resources :users, only: [:index]
+  resources :items, only: [:index, :new, :show, :create, :delete] 
   resources :card, only: [:new, :show, :create, :delete] do
     collection do
       post 'show', to: 'card#show'
@@ -11,6 +12,6 @@ Rails.application.routes.draw do
   end
   
   resources :posts, only: [:new, :create, :show]
-  # 商品購入機能はpostではなくitemコントローラーで
-  resources :items, only: [:new, :create, :show]
+  
+  
 end

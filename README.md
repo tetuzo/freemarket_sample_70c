@@ -45,8 +45,8 @@
 |shipping_charges|string|null: false|
 |shipping_days|string|null: false|
 |category_id|references|null: false, foreign_key: true|
-|size_id|references|null: false, foreign_key: true|
-|brand_id|references|null: false, foreign_key: true|
+|size_id|references|foreign_key: true|
+|brand_id|references|foreign_key: true|
 |seller_id|references|null: false,foreign_key: true|
 |buyer_id|references|null: false, foreign_key: true|
 |shipping_origin|references|null: false, foreign_key: true|

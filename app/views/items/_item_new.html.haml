@@ -1,0 +1,192 @@
+
+
+.sell
+  .sell__header
+    .sell__header__icon
+      = link_to '#' do
+        = image_tag '/images/logo/logo.png', alt: 'furima', height: '49', width: '185'
+  .sell__main
+    .sell__main__form
+      .sell__main__form__content
+      
+        = form_with url: items_path, local: true do |f|
+          .form__image__box
+            .form__list
+              .form__list__logo
+                出品画像
+              .form__list__label
+                必須
+            %p.max-sheets
+              最大10枚までアップロード出来ます
+            .form__image__box__area
+              .form__image__box__area--main
+              = f.fields_for :item_images do |image|
+                = image.label :image, accept: 'image/png,image/jpeg', class: 'form-mask-image box-display-none' do
+                  .sell-upload-drop-box
+                    = image.file_field :image,class: 'hidden file'
+                    %i.fa.fa-camera
+                    %pre.input-file-logo
+                      ドラッグアンドドロップ
+                      またはクリックしてファイルをアップロード        
+          %hr.devide
+          .form__text__box
+            .form__text__box__name
+              .form__list
+                .form__list__logo
+                  商品名
+                .form__list__label
+                  必須
+              .form__text__box__name__area
+                .form__text__box__name__area__input
+                  = f.text_field :name, placeholder: '40文字まで', class: 'input-name'
+            .form__text__box__discription
+              .form__list
+                .form__list__logo
+                  商品の説明
+                .form__list__label
+                  必須
+              .form__text__box__discription__area__text
+                = f.text_area :discription, onkeyup: 'ShowLength(value);', row: '7', class: 'input-textarea', placeholder: '商品の説明（必須1,000文字以内)                                                                                          (色、素材、重さ、定価、注意点)                                                                        例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。'
+                :javascript
+                  function ShowLength(str) {
+                  document.getElementById("inputlength").innerHTML = str.length + "/1000";
+                  }
+              .form__text__box__discription__length    
+                %p#inputlength
+                  0/1000
+          %hr.devide
+          .form__detail__box
+            %p.explain
+              商品の詳細
+            .form__detail__box__category
+              .form__list
+                .form__list__logo
+                  カテゴリー
+                .form__list__label
+                  必須
+              .form__detail__box__category__select
+                .form__detail__box__category__select__area
+                  -# = f.select :category, [["選択してください", 0],["レディース", 1], ["メンズ", 2], ["ベビー、キッズ", 3], ["インテリア、住まい、、小物", 4], ["本、音楽、ゲーム", 5], ["おもちゃ、ホビー、グッズ", 6], ["コスメ、香水、美容", 7], ["家電、スマホ、カメラ", 8], ["スポーツ、レジャー", 9], ["ハンドメイド", 10], ["チケット", 11], ["自動車、オートバイ", 12], ["その他",13]], {}, {class: 'select'}
+                .arrow
+            .form__detail__box__brand
+              .form__list
+                .form__list__logo
+                  ブランド
+                .form__list__label__any
+                  任意
+              .form__detail__box__brand__name
+                .form__detail__box__brand__name__input
+                  -# = f.text_field :brand, placeholder:  '例）シャネル', class: 'input-name'
+            .form__detail__box__status
+              .form__list
+                .form__list__logo
+                  商品の詳細
+                .form__list__label
+                  必須
+              .form__detail__box__status__select
+                .form__detail__box__status__select__area
+                  = f.select :status, [["選択してください", 0],["新品、未使用", 1], ["未使用に近い", 2], ["目立った傷、汚れなし", 3], ["インテリア、住まい", 4]], {}, {class: 'select'}
+                  .arrow
+          %hr.devide
+          .form__shipping__box
+            %p.explain
+              配送について
+              = link_to '#' do
+                %i.far.fa-question-circle{class: 'question'}
+
+            .form__shipping__box__charge
+              .form__list
+                .form__list__logo
+                  発送料の負担
+                .form__list__label
+                  必須
+              .form__shipping__box__charge__select
+                .form__shipping__box__charge__select__area
+                  = f.select :shipping_charges, [["選択してください", 0],["送料込み(出品者負担)", 1], ["着払い(購入者負担)", 2]], {}, {class: 'select'}
+                  .arrow
+            .form__shipping__box__area   
+              .form__list
+                .form__list__logo
+                  発送元の地域
+                .form__list__label
+                  必須
+              .form__shipping__box__area__select
+                .form__shipping__box__area__select__area
+                  -# = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {}, {class: 'select'}
+                  .arrow
+
+            .form__shipping__box__days
+              .form__list
+                .form__list__logo
+                  発送までの日数
+                .form__list__label
+                  必須
+              .form__shipping__box__days__select
+                .form__shipping__box__days__select__area
+                  = f.select :shipping_days, [["選択してください", 0],["1~2日で発送", 1], ["2~3日で発送", 2], ["4~7日で発送", 3]], {}, {class: 'select'}
+                  .arrow
+          %hr.devide 
+          .form__price__box
+            %p.explain
+              価格  (¥300~9,999,999)
+              = link_to '#' do
+                %i.far.fa-question-circle{class: 'question'}
+            .form__price__box__calculation
+              .form__price__box__calculation__input
+                .form__list
+                  .form__list__logo
+                    販売価格
+                  .form__list__label
+                    必須
+                %span.yen
+                  ¥
+                .form__price__box__calculation__input__area
+                  .form__price__box__calculation__input__area__field
+                    = f.number_field :price, class: 'input-price', placeholder: '0'
+              .form__price__box__comission
+                .form__price__box__comission__label
+                  販売手数料 (10%)
+                %span{}ー
+              %hr.devide-total 
+              .form__price__box__profit
+                .form__price__box__profit__label
+                  販売利益
+                %span{}ー
+            .form__price__box__button
+              = f.submit '出品する', class: 'draft'
+              = f.button '下書きに保存', class: 'exhibition'
+              = link_to root_path, class: 'link-root' do
+                もどる
+            %p.terms
+              禁止されている
+              = link_to '#', class: 'link' do
+                行為
+              および
+              = link_to '#', class: 'link' do
+                出品物
+              を必ず確認してください
+              = link_to '#', class: 'link' do
+                偽ブランド品
+              や
+              = link_to '#', class: 'link' do
+                盗品物
+              などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして
+              = link_to '#', class: 'link' do
+                加盟店規約
+              に同意したことになります。
+  .sell__footer
+    .sell__footer__logo
+      %ul.footer__logo__list
+        %li.footer__logo__list__style
+        = link_to '#', class: 'footer__logo__list__style__link' do
+          プライバシーポリシー
+        %li.footer__logo__list__style
+        = link_to '#', class: 'footer__logo__list__style__link' do
+          フリマ利用規約
+        %li.footer__logo__list__style
+        = link_to '#', class: 'footer__logo__list__style__link' do
+          特定商取引に関する表記
+    = link_to '#', class: 'sell__footer__link' do
+      = image_tag '/images/logo/logo-white.png', alt: 'furima', height: '65', width: '120', class: 'sell__footer__link__icon'
+    %p.sell__footer__inc
+      ©︎ Furima,inc
