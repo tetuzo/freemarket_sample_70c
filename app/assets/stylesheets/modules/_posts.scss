@@ -562,10 +562,17 @@ button, input, select, textarea {
 
 .form__image__box {
   padding: 40px;
-  &__area {
+  background-color: chartreuse;
+  .sell-upload-drop-box{
     height: 150px;
-    margin-top: 16px;
+    width: 640px;
+  }
+  &__area {
+    // height: 150px;
+    // margin-top: 16px;
+    // background-color: blue;
     &--main {
+      background-color: yellow;
       height: 100%;
       margin-top: 8px;
       flex: 1 1 0%;
@@ -683,6 +690,17 @@ button, input, select, textarea {
       }
     }
   }
+  &__size {
+    margin-top: 32px;
+    &__select {
+      position: relative;
+      margin-top: 16px;
+      &__area {
+        display: inline-block;
+        width: 620px;
+      }
+    }
+  }
   &__brand {
     margin-top: 32px;
     &__name {
@@ -779,6 +797,23 @@ button, input, select, textarea {
   padding: 0 56px 0 16px;
   -webkit-appearance: none;
   
+}
+select{
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #222;
+  font-size: 16px;
+  height: 48px;
+  line-height: 1;
+  margin: 0;
+  outline: none;
+  padding: 0 56px 0 16px;
+  width: 100%;
+  outline: none;
+  padding: 0 56px 0 16px;
+  -webkit-appearance: none;
 }
 
 
@@ -969,3 +1004,6 @@ button, input, select, textarea {
   text-decoration: none;
 }
 
+.hidden__file--sell{
+  display: none;
+} 
