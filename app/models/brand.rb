@@ -1,3 +1,3 @@
 class Brand < ApplicationRecord
-  belongs_to :category_id
+  # has_many :items
 end

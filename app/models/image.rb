@@ -3,5 +3,5 @@ class Image < ApplicationRecord
   belongs_to :item
 
   validates :image, presence: true
-  validates :items, presence: true
+  # validates :item_id, presence: true
 end
