@@ -23,7 +23,7 @@
             =link_to destroy_user_session_path, method: :delete, id: 'loginBtn' do
               ログアウト
           %li.listsLeft__item.listsRight__item--new
-            =link_to "#", id: 'signupBtn' do
+            =link_to "/users/#{current_user.id}", id: 'signupBtn' do
               マイページ
       - else
         %ul.listsRight

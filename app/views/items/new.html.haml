@@ -1,12 +1,10 @@
+.wrapper
+  = render "devise/registrations/header"
+
 .sell
-  .sell__header
-    .sell__header__icon
-      = link_to '#' do
-        = image_tag '/images/logo/logo.png', alt: 'furima', height: '49', width: '185'
   .sell__main
     .sell__main__form
       .sell__main__form__content
-      
         = form_with url: '#', local: true do |f|
           .form__image__box
             .form__list
@@ -60,9 +58,10 @@
                   カテゴリー
                 .form__list__label
                   必須
+                  
               .form__detail__box__category__select
                 .form__detail__box__category__select__area
-                  = f.select :category, [["選択してください", 0],["レディース", 1], ["メンズ", 2], ["ベビー、キッズ", 3], ["インテリア、住まい、、小物", 4], ["本、音楽、ゲーム", 5], ["おもちゃ、ホビー、グッズ", 6], ["コスメ、香水、美容", 7], ["家電、スマホ、カメラ", 8], ["スポーツ、レジャー", 9], ["ハンドメイド", 10], ["チケット", 11], ["自動車、オートバイ", 12], ["その他",13]], {}, {class: 'select'}
+                  = f.select :category, @category_parent_array, {}, {class: 'select', id: 'parent_category'}
                 .arrow
             .form__detail__box__brand
               .form__list
@@ -81,7 +80,7 @@
                   必須
               .form__detail__box__status__select
                 .form__detail__box__status__select__area
-                  = f.select :status, [["選択してください", 0],["新品、未使用", 1], ["未使用に近い", 2], ["目立った傷、汚れなし", 3], ["インテリア、住まい", 4]], {}, {class: 'select'}
+                  = f.select :status, [["選択してください", 0],["新品、未使用", 1], ["未使用に近い", 2], ["目立った傷、汚れなし", 3]], {}, {class: 'select'}
                   .arrow
           %hr.devide
           .form__shipping__box
@@ -170,19 +169,6 @@
               = link_to '#', class: 'link' do
                 加盟店規約
               に同意したことになります。
-  .sell__footer
-    .sell__footer__logo
-      %ul.footer__logo__list
-        %li.footer__logo__list__style
-        = link_to '#', class: 'footer__logo__list__style__link' do
-          プライバシーポリシー
-        %li.footer__logo__list__style
-        = link_to '#', class: 'footer__logo__list__style__link' do
-          フリマ利用規約
-        %li.footer__logo__list__style
-        = link_to '#', class: 'footer__logo__list__style__link' do
-          特定商取引に関する表記
-    = link_to '#', class: 'sell__footer__link' do
-      = image_tag '/images/logo/logo-white.png', alt: 'furima', height: '65', width: '120', class: 'sell__footer__link__icon'
-    %p.sell__footer__inc
-      ©︎ Furima,inc
+
+.wrapper
+  = render "devise/registrations/footer"
