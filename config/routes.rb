@@ -14,5 +14,10 @@ Rails.application.routes.draw do
   resources :purchases, only: [:index]
 
   # 商品購入機能はpostではなくitemコントローラーで
-  resources :items, only: [:new, :create, :show]
+  resources :items, only: [:new, :create, :show] do
+    collection do
+      get 'search_child', defaults: { format: 'json' }
+      get 'search_grandchild', defaults: { format: 'json' }
+    end
+  end
 end
