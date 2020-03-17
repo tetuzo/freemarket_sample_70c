@@ -1,3 +1,4 @@
+
 .wrapper
   = render "devise/registrations/header"
 
@@ -5,7 +6,9 @@
   .sell__main
     .sell__main__form
       .sell__main__form__content
-        = form_with url: '#', local: true do |f|
+
+      
+        = form_with model: @item do |f|
           .form__image__box
             .form__list
               .form__list__logo
@@ -13,15 +16,21 @@
               .form__list__label
                 必須
             %p.max-sheets
-              最大10枚までアップロード出来ます
-            .form__image__box__area
-              .form__image__box__area--main
-                = f.file_field :image, accept: 'image/png,image/jpeg', class: 'input-file'
-                %i.fa.fa-camera
-                %p.input-file-logo
-                  ドラッグアンドドロップ
-                  %br
-                  またはクリックしてファイルをアップロード
+              最大5枚までアップロード出来ます
+              .form__image__box__area
+                .prev-content
+                  = f.fields_for :images do |i|
+                    = i.label :image, accept: 'image/png,image/jpeg', class: 'form-mask-image box-display-none form__image__box__area--main' do
+                      .sell-upload-drop-box
+                        = i.file_field :image,class: ' hidden__file--sell js-file-sell'
+                        %input{class:"hidden__file--sell", type: "file", name: "item[images_attributes][1][image]", id: "item_images_attributes_1_image" }
+                        %input{class:"hidden__file--sell", type: "file", name: "item[images_attributes][2][image]", id: "item_images_attributes_2_image" }
+                        %input{class:"hidden__file--sell", type: "file", name: "item[images_attributes][3][image]", id: "item_images_attributes_3_image" }
+                        %input{class:"hidden__file--sell", type: "file", name: "item[images_attributes][4][image]", id: "item_images_attributes_4_image" }
+              %i.fa.fa-camera
+              %p.input-file-logo
+                ドラッグアンドドロップ
+                またはクリックしてファイルをアップロード      
           %hr.devide
           .form__text__box
             .form__text__box__name
@@ -61,8 +70,18 @@
                   
               .form__detail__box__category__select
                 .form__detail__box__category__select__area
-                  = f.select :category, @category_parent_array, {}, {class: 'select', id: 'parent_category'}
+                 = f.select :category, @category_parent_array, {}, {class: 'select', id: 'parent_category'}
                 .arrow
+            .form__detail__box__size
+              .form__list
+                .form__list__logo
+                  サイズ
+                .form__list__label
+                  必須
+              .form__detail__box__size__select
+                .form__detail__box__size__select__area
+                  = f.collection_select :size_id, Size.all, :id, :name, prompt: "選択してください", class: 'select'
+                  .arrow
             .form__detail__box__brand
               .form__list
                 .form__list__logo
@@ -71,7 +90,7 @@
                   任意
               .form__detail__box__brand__name
                 .form__detail__box__brand__name__input
-                  = f.text_field :brand, placeholder:  '例）シャネル', class: 'input-name'
+                  = f.text_field :brand_id, placeholder:  '例）シャネル', class: 'input-name'
             .form__detail__box__status
               .form__list
                 .form__list__logo
@@ -80,7 +99,7 @@
                   必須
               .form__detail__box__status__select
                 .form__detail__box__status__select__area
-                  = f.select :status, [["選択してください", 0],["新品、未使用", 1], ["未使用に近い", 2], ["目立った傷、汚れなし", 3]], {}, {class: 'select'}
+                  = f.collection_select :status_id, Status.all, :id, :name, prompt: "選択してください", class: 'select'
                   .arrow
           %hr.devide
           .form__shipping__box
@@ -97,7 +116,7 @@
                   必須
               .form__shipping__box__charge__select
                 .form__shipping__box__charge__select__area
-                  = f.select :shipping_id, [["選択してください", 0],["送料込み(出品者負担)", 1], ["着払い(購入者負担)", 2]], {}, {class: 'select'}
+                  = f.collection_select :shipping_charges_id, ShippingCharges.all, :id, :name, prompt: "選択してください", class: "select"
                   .arrow
             .form__shipping__box__area   
               .form__list
@@ -107,9 +126,8 @@
                   必須
               .form__shipping__box__area__select
                 .form__shipping__box__area__select__area
-                  = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {}, {class: 'select'}
+                  -# = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {}, {class: 'select'}
                   .arrow
-
             .form__shipping__box__days
               .form__list
                 .form__list__logo
@@ -118,7 +136,7 @@
                   必須
               .form__shipping__box__days__select
                 .form__shipping__box__days__select__area
-                  = f.select :days, [["選択してください", 0],["1~2日で発送", 1], ["2~3日で発送", 2], ["4~7日で発送", 3]], {}, {class: 'select'}
+                  = f.collection_select :shipping_days_id, ShippingDays.all, :id, :name, prompt: "選択してください", class: "select"
                   .arrow
           %hr.devide 
           .form__price__box
@@ -150,7 +168,7 @@
             .form__price__box__button
               = f.submit '出品する', class: 'draft'
               = f.button '下書きに保存', class: 'exhibition'
-              = link_to '#', class: 'link-root' do
+              = link_to root_path, class: 'link-root' do
                 もどる
             %p.terms
               禁止されている

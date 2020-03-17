@@ -40,13 +40,13 @@
 |------|----|------|
 |name|string|null: false|
 |discription|text|null: false|
-|status|string|null: false|
+|status_id|string|null: false|
 |price|integer|null: false|
-|shipping_charges|string|null: false|
-|shipping_days|string|null: false|
+|shipping_charges_id|string|null: false|
+|shipping_days_id|string|null: false|
 |category_id|references|null: false, foreign_key: true|
-|size_id|references|null: false, foreign_key: true|
-|brand_id|references|null: false, foreign_key: true|
+|size_id|references|foreign_key: true|
+|brand_id|references|foreign_key: true|
 |seller_id|references|null: false,foreign_key: true|
 |buyer_id|references|null: false, foreign_key: true|
 |shipping_origin|references|null: false, foreign_key: true|
