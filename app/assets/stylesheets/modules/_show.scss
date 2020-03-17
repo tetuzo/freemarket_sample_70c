@@ -1,9 +1,24 @@
+body{
+  font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
+}
+table th{
+  background-color: #eeeeee;
+  text-align: center;
+  width: 25%;
+}
+table th,table td{
+  border: solid 1px #dddddd;
+  padding: 0px 10px;
+  font-size: 14px;
+}
+table td{
+  background-color: #ffffff;
+}
 
 a{
   text-decoration: none;
   color: #3CCACE;
 }
-
 
 .breadcrumbs{
   height: 55px;
