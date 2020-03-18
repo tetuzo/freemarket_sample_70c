@@ -6,26 +6,15 @@
 |nickname|string|null: false|
 |email|string|null: false, unique: true|
 |password|string|null: false|
-|first_name|string|null: false|
-|family_name|string|null: false|
-|first_name_kana|string|null: false|
-|family_name_kana|string|null: false|
-|post_code|integer|null: false|
-|birthday_year|integer|null: false|
-|birthday_month|integer|null: false|
-|birthday_day|integer|null: false|
-|prefecture|string|null: false|
-|municipality|string|null: false|
-|address|integer|null: false|
-|buliding_name|string|null: false|
-|telephone_number|integer|null: false|
 
 ### Association
+- has_one :personal, dependent: :destroy
 - has_many :credit_cards dependent: :destroy
+- has_one :address, dependent: :destroy
 - has_many :buyer_items, class_name: 'Item', :foreign_key => 'buyer_id'
 - has_many :seller_items, class_name: 'Item', :foreign_key => 'seller_id'
 
-## credit_cardsテーブル
+## cardsテーブル
 |Column|Type|Option|
 |------|----|------|
 |customer_id|string|null: false|
@@ -39,7 +28,7 @@
 |Column|Type|Option|
 |------|----|------|
 |name|string|null: false|
-|discription|text|null: false|
+|descliption|text|null: false|
 |status_id|string|null: false|
 |price|integer|null: false|
 |shipping_charges_id|string|null: false|
@@ -49,15 +38,15 @@
 |brand_id|references|foreign_key: true|
 |seller_id|references|null: false,foreign_key: true|
 |buyer_id|references|null: false, foreign_key: true|
-|shipping_origin|references|null: false, foreign_key: true|
+|prefecture_id||null: false|
 
 ### Association
-- belongs_to :buyer, class_name: 'User', :foreign_key => 'buyer_id'
-- belongs_to :seller, class_name: 'User', :foreign_key => 'seller_id'
 - has_many :images dependent: :destroy
 - belongs_to :category
 - belongs_to :brand
 - belongs_to :size
+- belongs_to :buyer, class_name: 'User', :foreign_key => 'buyer_id'
+- belongs_to :seller, class_name: 'User', :foreign_key => 'seller_id'
 
 ## imagesテーブル
 |Column|Type|Option|
@@ -90,20 +79,35 @@
 - has_many :items
 - belongs_to :category
 
-## sizeテーブル
+## personalsテーブル
 |Column|Type|Option|
 |------|----|------|
-|value|string|null :false|
+|first_name|string|null: false|
+|family_name|string|null: false|
+|first_name_kana|string|null: false|
+|family_name_kana|string|null: false|
+|birthday_year|integer|null: false|
+|birthday_month|integer|null: false|
+|birthday_day|integer|null: false|
+|user_id|references|null: false, foreign_key|
 
 ### Association
-- has_many :items
+- belongs_to :user
 
-## shipping_originテーブル
+## addressesテーブル
 |Column|Type|Option|
 |------|----|------|
-|prefecture_id|integer|null: false|
-|city|string|null: false|
+|distination_first_name|string|null: false|
+|distination_family_name|string|null: false|
+|distination_first_name_kana|string|null: false|
+|distination_family_name_kana|string|null: false|
+|post_code|integer|null: false|
+|prefecture|string|null: false|
+|municipality|string|null: false|
+|house_number|integer|null: false|
+|buliding_name|string|null: false|
+|telephone_number|integer|null: false|
+|user_id|references|null: false, foreign_key|
 
 ### Association
-- extend ActiveHash::Associations::ActiveRecordExtensions
-- belongs_to_active_hash :prefecture
+- belongs_to :user
