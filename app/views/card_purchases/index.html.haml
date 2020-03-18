@@ -1,0 +1,48 @@
+.wrapper
+  = render "devise/registrations/header"
+
+.purchase-main
+  .purchase-main__content
+    .purchase-main__content__upper
+      購入を確定しますか？
+    .purchase-main__content__middle
+      .purchase-main__content__middle__buy-item
+        = image_tag "/images/credit/visa.jpg", class: "purchase-main__content__middle__buy-item__image"
+        .purchase-main__content__middle__buy-item__box
+          .purchase-detail
+            送料無料　SoftBank　純正　ACアダプタ　DE-SBA002 急速充電器
+          .purchase-cost
+            .purchase-cost__price
+              ¥500
+            .purchase-cost__tax
+              （税込）送料込み
+    .purchase-main__content__lower
+      .purchase-main__content__lower__box
+        .purchase-main__content__lower__box__price
+          .pay-money
+            支払い金額
+          .pay-value
+            ¥500
+        .purchase-main__content__lower__box__pay-methods
+          支払い方法
+          =link_to "#", class:"purchase-add"do
+            .purchase-add__credit
+              + 登録してください
+        .purchase-main__content__lower__box__user-info
+          配送先
+          = link_to "#", class: "info-change" do
+            変更する
+          .purchase-main__content__lower__box__user-info__detail
+            .postnumber
+              〒658-0081
+            .home-address
+              兵庫県 神戸市東灘区 田中町4-3-6 
+            .user-name
+              田中　太郎
+              -# = current_user.name
+        .purchase-main__content__lower__box__btn
+          = form_with url: pay_purchase_index, method: :post, html: {name: "buy"} do |f|
+            = f.submit "購入する", class: "buy-btn"
+
+.wrapper
+  = render "devise/registrations/footer"
