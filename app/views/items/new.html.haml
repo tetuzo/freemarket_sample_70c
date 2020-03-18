@@ -67,10 +67,9 @@
                   カテゴリー
                 .form__list__label
                   必須
-                  
               .form__detail__box__category__select
                 .form__detail__box__category__select__area
-                  = f.select :category, @category_parent_array, {}, {class: 'select', id: 'parent_category'}
+                  = f.select :category_id, @category_parent_array, {}, {class: 'select', id: 'parent_category'}
                 .arrow
             .form__detail__box__size
               .form__list
