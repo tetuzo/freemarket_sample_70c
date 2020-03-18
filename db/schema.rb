@@ -66,12 +66,12 @@ ActiveRecord::Schema.define(version: 2020_03_18_031501) do
     t.integer "price", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "category_id"
     t.integer "size_id"
     t.integer "shipping_charges_id"
     t.integer "shipping_days_id"
     t.integer "status_id"
     t.integer "trade_id"
-    t.integer "category_id"
     t.string "brand_id"
     t.integer "prefecture_id"
   end
