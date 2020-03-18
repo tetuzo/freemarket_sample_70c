@@ -27,11 +27,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  private
-  def item_params
-    params.require(:item).permit(:name, :discription, :status_id, :shipping_charges_id, :shipping_days_id, :price, :size_id, :brand_id, :prefecture_id, images_attributes: [:image])
-  end
-
   def search_child  
     @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
   end
@@ -39,4 +34,11 @@ class ItemsController < ApplicationController
   def search_grandchild
     @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
+
+  private
+  def item_params
+    params.require(:item).permit(:name, :discription, :status_id, :shipping_charges_id, :shipping_days_id, :price, :size_id, :brand_id, :prefecture_id, images_attributes: [:image])
+  end
+
+  
 end
