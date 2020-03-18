@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    
   end
 
   def new
@@ -37,7 +38,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :discription, :status_id, :shipping_charges_id, :shipping_days_id, :price, :size_id, :brand_id, :prefecture_id, images_attributes: [:image])
+    params.require(:item).permit(:name, :discription, :status_id, :shipping_charges_id, :shipping_days_id, :price, :size_id, :brand_id, :prefecture_id, :category_id, images_attributes: [:image])
   end
 
   
