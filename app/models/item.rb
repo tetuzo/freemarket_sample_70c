@@ -2,8 +2,8 @@ class Item < ApplicationRecord
 
   has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images, allow_destroy: true
-  belongs_to :brand
-  belongs_to :trde
+  belongs_to :brand, optional: true
+  belongs_to :trde, optional: true
 
 
 
@@ -24,5 +24,5 @@ class Item < ApplicationRecord
 
   
   # belongs_to user, foreign_key: 'user_id'
-  belongs_to :category
+  belongs_to :category, optional: true
 end
