@@ -28,8 +28,8 @@ Rails.application.routes.draw do
     end
   end
 
-  # 商品購入機能はpostではなくitemコントローラーで
-  resources :items, only: [:new, :create, :show] do
+
+  resources :items, only: [:index, :new, :create, :show] do
     collection do
       get 'search_child', defaults: { format: 'json' }
       get 'search_grandchild', defaults: { format: 'json' }
