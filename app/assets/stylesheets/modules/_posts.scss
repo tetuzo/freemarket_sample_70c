@@ -562,7 +562,6 @@ button, input, select, textarea {
 
 .form__image__box {
   padding: 40px;
-  background-color: chartreuse;
   .sell-upload-drop-box{
     height: 150px;
     width: 640px;
@@ -591,6 +590,10 @@ button, input, select, textarea {
       border-style: dashed;
       border-color: rgb(204, 204, 204);
       border-image: initial;
+      .item_sell_cameraIcon{
+        position: absolute;
+        top: 50px;
+      }
     }
   }
 }
