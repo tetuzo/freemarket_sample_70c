@@ -126,7 +126,7 @@
                   必須
               .form__shipping__box__area__select
                 .form__shipping__box__area__select__area
-                  -# = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {}, {class: 'select'}
+                  = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {}, {class: 'select'}
                   .arrow
             .form__shipping__box__days
               .form__list
