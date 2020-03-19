@@ -6,8 +6,6 @@
   .sell__main
     .sell__main__form
       .sell__main__form__content
-
-      
         = form_with model: @item do |f|
           .form__image__box
             .form__list
@@ -17,20 +15,38 @@
                 必須
             %p.max-sheets
               最大5枚までアップロード出来ます
-              .form__image__box__area
-                .prev-content
-                  = f.fields_for :images do |i|
-                    = i.label :image, accept: 'image/png,image/jpeg', class: 'form-mask-image box-display-none form__image__box__area--main' do
-                      .sell-upload-drop-box
-                        = i.file_field :image,class: ' hidden__file--sell js-file-sell'
-                        %input{class:"hidden__file--sell", type: "file", name: "item[images_attributes][1][image]", id: "item_images_attributes_1_image" }
-                        %input{class:"hidden__file--sell", type: "file", name: "item[images_attributes][2][image]", id: "item_images_attributes_2_image" }
-                        %input{class:"hidden__file--sell", type: "file", name: "item[images_attributes][3][image]", id: "item_images_attributes_3_image" }
-                        %input{class:"hidden__file--sell", type: "file", name: "item[images_attributes][4][image]", id: "item_images_attributes_4_image" }
-                      %i.fa.fa-camera.item_sell_cameraIcon
-                      %p.input-file-logo
-                        ドラッグアンドドロップ
-                        またはクリックしてファイルをアップロード      
+            .post__drop__box__container
+              .prev-content
+              .label-content
+                %label{for: "item_images_attributes_0_image", class: "label-box", id: "label-box--0"}
+                  %pre.label-box__text-visible 
+                    %i.fa.fa-camera.item_sell_cameraIcon
+                    ドラッグアンドドロップ
+                    またはクリックしてファイルをアップロード
+              .hidden-content
+                = f.fields_for :images do |i|
+                  = i.file_field :image, class: "hidden-field", id: "item_images_attributes_0_image"
+                  %input{class:"hidden-field", type: "file", name: "item[images_attributes][1][image]", id: "item_images_attributes_1_image" }
+                  %input{class:"hidden-field", type: "file", name: "item[images_attributes][2][image]", id: "item_images_attributes_2_image" }
+                  %input{class:"hidden-field", type: "file", name: "item[images_attributes][3][image]", id: "item_images_attributes_3_image" }
+                  %input{class:"hidden-field", type: "file", name: "item[images_attributes][4][image]", id: "item_images_attributes_4_image" }
+
+              -# .form__image__box__area
+              -#   .prev-content
+              -#   .label-content
+              -#     %label{ accept: 'image/png,image/jpeg', for: 'item_images_attributes_0_image', class: 'form-mask-image box-display-none form__image__box__area--main ', id: 'label-box--0' }
+              -#       %pre.label-box__text-visible.sell-upload-drop-box
+              -#     .hidden-content
+              -#       = f.fields_for :images do |i|
+              -#         = i.file_field :image,class: ' hidden__file--sell js-file-sell', id: "item_images_attributes_0_image"
+              -#         %input{class:"hidden__file--sell", type: "file", name: "item[images_attributes][1][image]", id: "item_images_attributes_1_image" }
+              -#         %input{class:"hidden__file--sell", type: "file", name: "item[images_attributes][2][image]", id: "item_images_attributes_2_image" }
+              -#         %input{class:"hidden__file--sell", type: "file", name: "item[images_attributes][3][image]", id: "item_images_attributes_3_image" }
+              -#         %input{class:"hidden__file--sell", type: "file", name: "item[images_attributes][4][image]", id: "item_images_attributes_4_image" }
+                  %i.fa.fa-camera.item_sell_cameraIcon
+                  %p.input-file-logo
+                    ドラッグアンドドロップ
+                    またはクリックしてファイルをアップロード      
           %hr.devide
           .form__text__box
             .form__text__box__name
