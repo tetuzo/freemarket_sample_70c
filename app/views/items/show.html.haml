@@ -3,7 +3,14 @@
 
 
 .breadcrumbs
-  FURIMA>メンズ>ジャケット/アウター>ノーカラージャケット>product2
+  FURIMA>
+  = @item.category.root.name
+  >
+  = @item.category.parent.name
+  >
+  = @item.category.name
+  >
+  = @item.name
 .purchus__btn
   = link_to '#', class:"purcus__btn" do
     %div.purchus__comment  出品する
@@ -12,10 +19,10 @@
   .item__contents
     .item__box
       %h2.item__box--name
-        name
+        = @item.name
       %ul.item__box--photos
         %li.photo__large
-          = image_tag "/images/pict/item_sample1.png", class:"photo__large"
+          
         %ul.photo__small
           %li
             = image_tag "/images/pict/item_sample2.png", class: "photo__small--left"
@@ -25,7 +32,9 @@
             = image_tag "/images/pict/item_sample4.png", class: "photo__small--right"
       .item__box--price
         .item__price
-          %span¥20000
+          %span
+            ¥
+            = @item.price
         .price__info
           %span (税込)
           %span 送料込み
@@ -45,34 +54,41 @@
           %td
             = link_to '#' do
               %ol
-                %li メンズ
+                %li
+                  = @item.category.root.name
             = link_to '#' do
               %ol
-                %li ジャケット/アウター
+                %li 
+                = @item.category.parent.name
             = link_to '#' do
               %ol
-                %li ノーカラー
+                %li
+                  = @item.category.name
         %tr.item__bland
           %th ブランド
           %td 
         %tr.item__size
-          %th 商品のサイズ
+          %th 
           %td 
         %tr.item__status
           %th 商品の状態
-          %td hoge
+          %td
+            = @item.status.name
         %tr.item__deli--chage
           %th 配送料の負担
-          %td hoge
+          %td
+            = @item.shipping_charges.name
         %tr.deli__area
           %th 発送元の地域
           %td
             = link_to '#' do
               %ol
-                %li 愛知
+                %li
+                = @item.prefecture.name
         %tr.item__status
           %th 発送日の目安
-          %td 1-2日で発送
+          %td
+            = @item.shipping_days.name
       %ul.item__box--btn
         .like__btn
           = link_to '#' do
@@ -85,11 +101,11 @@
     .comments
       .form
         .comment__form
-          = form_with model: @user do |form|
-            = form.text_area :comment, class: "comment__form--field"
-            = form.label :comment, class: "comment__form--icon" do
-              %i.fas.fa-comment
-            = form.submit "コメントする", class: "form__btn"
+          -# = form_with model: @user do |form|
+          -#   = form.text_area :comment, class: "comment__form--field"
+          -#   = form.label :comment, class: "comment__form--icon" do
+          -#     %i.fas.fa-comment
+          -#   = form.submit "コメントする", class: "form__btn"
           
         .comment__attention
           相手のことを考え丁寧なコメントを心がけましょう。
@@ -106,7 +122,9 @@
         %i.fas.fa-chevron-right
     %ul.other__item
       = link_to '#' do
-        %li メンズをもっと見る
+        %li 
+          = @item.category.root.name
+          をもっと見る
 
 
 .wrapper

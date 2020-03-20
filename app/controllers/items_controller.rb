@@ -4,19 +4,23 @@ class ItemsController < ApplicationController
   end
 
   def show
-    
+    @item = Item.find(params[:id])
+    # @image = Image.where(@item)
+    status = Status.find(@item.status_id)
+    shipping_charges = ShippingCharges.find(@item.shipping_charges_id)
+    prefecture = Prefecture.find(@item.prefecture_id)
+    category = Category.find(@item.category_id)
+    shipping_days = ShippingDays.find(@item.shipping_days_id)
   end
 
   def new
-
     @item = Item.new
     @item.images.new
     @category_parent_array = ["選択してください"]
     #データベースから、親カテゴリーのみ抽出し、配列化
       Category.where(ancestry: nil).each do |parent|
-         @category_parent_array << parent.name
+        @category_parent_array << parent.name
       end
-
   end
 
   def create

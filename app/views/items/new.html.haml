@@ -70,7 +70,7 @@
                   
               .form__detail__box__category__select
                 .form__detail__box__category__select__area
-                  = f.select :category_id, @category_parent_array, {}, {class: 'select', id: 'parent_category'}
+                  = f.select :category_id, @category_parent_array, {}, {class: 'select__sell', id: 'parent_category', name: "category_id"}
                 .arrow
             .form__detail__box__size
               .form__list
@@ -80,7 +80,7 @@
                   必須
               .form__detail__box__size__select
                 .form__detail__box__size__select__area
-                  = f.collection_select :size_id, Size.all, :id, :name, prompt: "選択してください", class: 'select'
+                  = f.collection_select :size_id, Size.all, :id, :name, {prompt: "選択してください"}, {class: 'select__sell'}
                   .arrow
             .form__detail__box__brand
               .form__list
@@ -99,7 +99,7 @@
                   必須
               .form__detail__box__status__select
                 .form__detail__box__status__select__area
-                  = f.collection_select :status_id, Status.all, :id, :name, prompt: "選択してください", class: 'select'
+                  = f.collection_select :status_id, Status.all, :id, :name, {prompt: "選択してください"}, {class: 'select__sell'}
                   .arrow
           %hr.devide
           .form__shipping__box
@@ -116,7 +116,7 @@
                   必須
               .form__shipping__box__charge__select
                 .form__shipping__box__charge__select__area
-                  = f.collection_select :shipping_charges_id, ShippingCharges.all, :id, :name, prompt: "選択してください", class: "select"
+                  = f.collection_select :shipping_charges_id, ShippingCharges.all, :id, :name, {prompt: "選択してください"}, {class: "select__sell"}
                   .arrow
             .form__shipping__box__area   
               .form__list
@@ -126,7 +126,7 @@
                   必須
               .form__shipping__box__area__select
                 .form__shipping__box__area__select__area
-                  = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {}, {class: 'select'}
+                  = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {}, {class: 'select__sell'}
                   .arrow
             .form__shipping__box__days
               .form__list
@@ -136,7 +136,7 @@
                   必須
               .form__shipping__box__days__select
                 .form__shipping__box__days__select__area
-                  = f.collection_select :shipping_days_id, ShippingDays.all, :id, :name, prompt: "選択してください", class: "select"
+                  = f.collection_select :shipping_days_id, ShippingDays.all, :id, :name, {prompt: "選択してください"}, {class: "select__sell"}
                   .arrow
           %hr.devide 
           .form__price__box
