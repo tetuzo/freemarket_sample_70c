@@ -4,7 +4,8 @@ class Item < ApplicationRecord
   accepts_nested_attributes_for :images, allow_destroy: true
   belongs_to :brand, optional: true
   belongs_to :trde, optional: true
-
+  belongs_to :buyer, class_name: 'User', :foreign_key => 'buyer_id', optional: true
+  belongs_to :seller, class_name: 'User', :foreign_key => 'seller_id', optional: true
 
 
 
@@ -16,8 +17,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
   
   
-  
-
+ 
 
   validates :name, presence: true, length: { maximum:40 }
   validates :discription, presence: true, length: { maximum: 1000 }
@@ -30,6 +30,12 @@ class Item < ApplicationRecord
   validates :prefecture_id, presence: true
   validates :images, presence: true
 
+
   
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :prefecture
+
+  
+  # belongs_to user, foreign_key: 'user_id'
   belongs_to :category, optional: true
 end

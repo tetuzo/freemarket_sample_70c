@@ -2,6 +2,8 @@ class PostsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
 
   def index
+    @items = Item.order("updated_at DESC").limit(6)
+    @images = Image.order("updated_at DESC").limit(6)
   end
 
   def show

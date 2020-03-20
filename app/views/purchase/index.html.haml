@@ -4,7 +4,7 @@
 .purchase-main
   .purchase-main__content
     .purchase-main__content__upper
-      購入内容の確認
+      購入を確定しますか？
     .purchase-main__content__middle
       .purchase-main__content__middle__buy-item
         = image_tag "/images/credit/visa.jpg", class: "purchase-main__content__middle__buy-item__image"
@@ -25,9 +25,16 @@
             ¥500
         .purchase-main__content__lower__box__pay-methods
           支払い方法
-          =link_to "#", class:"purchase-add"do
+          .purchase-add
             .purchase-add__credit
-              + 登録してください
+              - if @default_card_information.blank?
+                %br /
+              - else
+                -#以下カード情報を表示
+                = "**** **** **** " + @default_card_information.last4
+                - exp_month = @default_card_information.exp_month.to_s
+                - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+                = exp_month + " / " + exp_year
         .purchase-main__content__lower__box__user-info
           配送先
           = link_to "#", class: "info-change" do
@@ -38,10 +45,10 @@
             .home-address
               兵庫県 神戸市東灘区 田中町4-3-6 
             .user-name
-              田中　太郎
-              -# = current_user.name
+              = current_user.family_name
+              = current_user.first_name
         .purchase-main__content__lower__box__btn
-          = form_with url: pay_card_index_path, method: :post, html: {name: "buy"} do |f|
+          = form_with url: pay_purchase_index_path, method: :post, html: {name: "buy"} do |f|
             = f.submit "購入する", class: "buy-btn"
 
 .wrapper

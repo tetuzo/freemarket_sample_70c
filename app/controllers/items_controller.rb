@@ -4,10 +4,17 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.find(params[:id])
+    # 詳細表示機能イメージ表示用
+    # @image = Image.where(@item)
+    status = Status.find(@item.status_id)
+    shipping_charges = ShippingCharges.find(@item.shipping_charges_id)
+    prefecture = Prefecture.find(@item.prefecture_id)
+    category = Category.find(@item.category_id)
+    shipping_days = ShippingDays.find(@item.shipping_days_id)
   end
 
   def new
-
     @item = Item.new
     @item.images.new
     @category_parent_array = ["選択してください"]
@@ -15,7 +22,6 @@ class ItemsController < ApplicationController
       Category.where(ancestry: nil).each do |parent|
         @category_parent_array << parent.name
       end
-
   end
 
   def create
@@ -37,7 +43,9 @@ class ItemsController < ApplicationController
 
   private
   def item_params
+
     params.require(:item).permit(:name, :discription, :shipping_charges_id, :shipping_days_id, :price, :size_id, :category_id, :prefecture_id, :brand_id, :status_id, images_attributes: [:image])
+
   end
 
   

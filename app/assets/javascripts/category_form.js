@@ -1,7 +1,7 @@
 $(function(){
   // カテゴリーセレクトボックスのオプションを作成
   function appendOption(category){
-    var html = `<option value="${category.name}" data-category="${category.id}">${category.name}</option>`;
+    var html = `<option value="${category.id}" data-category="${category.id}">${category.name}</option>`;
     return html;
   }
   // 子カテゴリーの表示作成
@@ -23,7 +23,7 @@ $(function(){
     var grandchildSelectHtml = '';
     grandchildSelectHtml = `<div class='form__detail__box__category__select__added' id= 'grandchildren_wrapper'>
                               <div class='form__detail__box__category__select__area'>
-                                <select class="select" id="grandchild_category" name="category_id">
+                                <select class="select" id="grandchild_category" name=item[category_id]>
                                   <option value="---" data-category="---">選択してください</option>
                                   ${insertHTML}
                                 </select>
