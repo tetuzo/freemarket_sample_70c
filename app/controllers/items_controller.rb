@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user,   only: [:new ]
+
   def index
     @items = Item.includes(:images)
   end
@@ -39,6 +41,10 @@ class ItemsController < ApplicationController
 
   def search_grandchild
     @category_grandchildren = Category.find("#{params[:child_id]}").children
+  end
+
+  def authenticate_user
+    redirect_to new_user_session_path unless user_signed_in?  
   end
 
   private
