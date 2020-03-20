@@ -1,0 +1,52 @@
+.main__sell--body{
+  height: 450px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  .sell__complete{
+    height: 100%;
+    width: 650px;
+    background-color: #ffffff;
+    
+    &--message{
+      height: 60px;
+      width: 100%;
+      background-color: #ffffff;
+      margin-top: 70px;
+      line-height: 60px;
+      text-align: center;
+      font-size: 18px;
+      
+    }
+    &--link{
+      height: 200px;
+      width: 100%;
+     
+      margin-top: 45px;
+      display: flex;
+      justify-content: center;
+      .sell__complete--box{
+        height: 100%;
+        width: 300px;
+        padding-bottom: 0px;
+        .sell__complete--continue{
+          height: 60px;
+          width: 300px;
+          background-color: #3CCACE;
+          font-size: 16px;
+          color: #ffffff;
+          font-weight: bold;
+        }
+        .sell__complete--itemShow{
+          height: 60px;
+          width: 300px;
+          background-color: #3CCACE;
+          margin-top: 40px;
+          font-size: 16px;
+          color: #ffffff;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
