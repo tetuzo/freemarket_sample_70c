@@ -6,31 +6,32 @@
   .sell__main
     .sell__main__form
       .sell__main__form__content
-
-      
-        = form_with model: @item do |f|
+        = form_with model: @item, local: true do |f|
           .form__image__box
             .form__list
               .form__list__logo
                 出品画像
               .form__list__label
                 必須
+              - @item.errors.full_messages_for(:images).each do |message|
+                = message
             %p.max-sheets
               最大5枚までアップロード出来ます
-              .form__image__box__area
-                .prev-content
-                  = f.fields_for :images do |i|
-                    = i.label :image, accept: 'image/png,image/jpeg', class: 'form-mask-image box-display-none form__image__box__area--main' do
-                      .sell-upload-drop-box
-                        = i.file_field :image,class: ' hidden__file--sell js-file-sell'
-                        %input{class:"hidden__file--sell", type: "file", name: "item[images_attributes][1][image]", id: "item_images_attributes_1_image" }
-                        %input{class:"hidden__file--sell", type: "file", name: "item[images_attributes][2][image]", id: "item_images_attributes_2_image" }
-                        %input{class:"hidden__file--sell", type: "file", name: "item[images_attributes][3][image]", id: "item_images_attributes_3_image" }
-                        %input{class:"hidden__file--sell", type: "file", name: "item[images_attributes][4][image]", id: "item_images_attributes_4_image" }
-                      %i.fa.fa-camera.item_sell_cameraIcon
-                      %p.input-file-logo
-                        ドラッグアンドドロップ
-                        またはクリックしてファイルをアップロード      
+            .post__drop__box__container
+              .prev-content
+              .label-content
+                %label{for: "item_images_attributes_0_image", class: "label-box", id: "label-box--0"}
+                  %pre.label-box__text-visible 
+                    %i.fa.fa-camera.item_sell_cameraIcon
+                    ドラッグアンドドロップ
+                    またはクリックしてファイルをアップロード
+              .hidden-content
+                = f.fields_for :images do |i|
+                  = i.file_field :image, class: "hidden-field", id: "item_images_attributes_0_image"
+                  %input{class:"hidden-field", type: "file", name: "item[images_attributes][1][image]", id: "item_images_attributes_1_image", accept: "image/png,image/jpeg,image/gif" }
+                  %input{class:"hidden-field", type: "file", name: "item[images_attributes][2][image]", id: "item_images_attributes_2_image" }
+                  %input{class:"hidden-field", type: "file", name: "item[images_attributes][3][image]", id: "item_images_attributes_3_image" }
+                  %input{class:"hidden-field", type: "file", name: "item[images_attributes][4][image]", id: "item_images_attributes_4_image" }
           %hr.devide
           .form__text__box
             .form__text__box__name
@@ -39,6 +40,8 @@
                   商品名
                 .form__list__label
                   必須
+                - @item.errors.full_messages_for(:name).each do |message|
+                  = message
               .form__text__box__name__area
                 .form__text__box__name__area__input
                   = f.text_field :name, placeholder: '40文字まで', class: 'input-name'
@@ -48,6 +51,8 @@
                   商品の説明
                 .form__list__label
                   必須
+                - @item.errors.full_messages_for(:discription).each do |message|
+                  = message
               .form__text__box__discription__area__text
                 = f.text_area :discription, onkeyup: 'ShowLength(value);', row: '7', class: 'input-textarea', placeholder: '商品の説明（必須1,000文字以内)                                                                                          (色、素材、重さ、定価、注意点)                                                                        例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。'
                 :javascript
@@ -67,21 +72,23 @@
                   カテゴリー
                 .form__list__label
                   必須
-                  
+                  カテゴリー機能実装待ち
+                - @item.errors.full_messages_for(:category_id).each do |message|
+                  = message
               .form__detail__box__category__select
                 .form__detail__box__category__select__area
-                  = f.select :category_id, @category_parent_array, {}, {class: 'select__sell', id: 'parent_category'}
+                  = f.select :category_id, @category_parent_array, {}, {class: 'select', id: 'parent_category'}
                 .arrow
-            .form__detail__box__size
-              .form__list
-                .form__list__logo
-                  サイズ
-                .form__list__label
-                  必須
-              .form__detail__box__size__select
-                .form__detail__box__size__select__area
-                  = f.collection_select :size_id, Size.all, :id, :name, prompt: "選択してください", class: 'select__sell'
-                  .arrow
+            -# .form__detail__box__size
+            -#   .form__list
+            -#     .form__list__logo
+            -#       サイズ
+            -#     .form__list__label
+            -#       必須
+            -#   .form__detail__box__size__select
+            -#     .form__detail__box__size__select__area
+            -#       = f.collection_select :size_id, Size.all, :id, :name, {prompt: "選択してください"}, {class: 'select__sell'}
+            -#       .arrow
             .form__detail__box__brand
               .form__list
                 .form__list__logo
@@ -97,9 +104,13 @@
                   商品の詳細
                 .form__list__label
                   必須
+                - @item.errors.full_messages_for(:status_id).each do |message|
+                  = message
               .form__detail__box__status__select
                 .form__detail__box__status__select__area
-                  = f.collection_select :status_id, Status.all, :id, :name, prompt: "選択してください", class: 'select__sell'
+
+                  = f.collection_select :status_id, Status.all, :id, :name, {prompt: "選択してください"}, {class: 'select__sell'}
+
                   .arrow
           %hr.devide
           .form__shipping__box
@@ -107,16 +118,17 @@
               配送について
               = link_to '#' do
                 %i.far.fa-question-circle{class: 'question'}
-
             .form__shipping__box__charge
               .form__list
                 .form__list__logo
                   発送料の負担
                 .form__list__label
                   必須
+                - @item.errors.full_messages_for(:shipping_charges_id).each do |message|
+                  = message
               .form__shipping__box__charge__select
                 .form__shipping__box__charge__select__area
-                  = f.collection_select :shipping_charges_id, ShippingCharges.all, :id, :name, prompt: "選択してください", class: "select__sell"
+                  = f.collection_select :shipping_charges_id, ShippingCharges.all, :id, :name, {prompt: "選択してください"}, {class: "select__sell"}
                   .arrow
             .form__shipping__box__area   
               .form__list
@@ -124,9 +136,11 @@
                   発送元の地域
                 .form__list__label
                   必須
+                - @item.errors.full_messages_for(:prefecture_id).each do |message|
+                  = message
               .form__shipping__box__area__select
                 .form__shipping__box__area__select__area
-                  = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {}, {class: 'select__sell'}
+                  = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "選択してください"}, {class: 'select__sell'}
                   .arrow
             .form__shipping__box__days
               .form__list
@@ -134,12 +148,17 @@
                   発送までの日数
                 .form__list__label
                   必須
+                - @item.errors.full_messages_for(:shipping_days_id).each do |message|
+                  = message
               .form__shipping__box__days__select
                 .form__shipping__box__days__select__area
-                  = f.collection_select :shipping_days_id, ShippingDays.all, :id, :name, prompt: "選択してください", class: "select__sell"
+                  = f.collection_select :shipping_days_id, ShippingDays.all, :id, :name, {prompt: "選択してください"}, {class: "select__sell"}
                   .arrow
           %hr.devide 
           .form__price__box
+            .form__price__box-error
+            - @item.errors.full_messages_for(:price).each do |message|
+              = message
             %p.explain
               価格  (¥300~9,999,999)
               = link_to '#' do

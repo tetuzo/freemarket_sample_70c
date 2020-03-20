@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   
   root "posts#index"
   resources :users, only: [:index, :show]
+  
   resources :card, only: [:new, :show] do
     collection do
       post 'show', to: 'card#show'
@@ -21,10 +22,11 @@ Rails.application.routes.draw do
   
   resources :posts, only: [:new, :create, :show]
 
-  resources :purchase, only: [:index] do
+  resources :purchase, only: [:show] do
     collection do
-      post 'pay', to: 'purchase#pay'
-      get 'done', to: 'purchase#done'
+      post 'pay/:id', to: 'purchase#pay'
+      post '/:id', to: 'purchase#pay' 
+      get 'done/:id', to: 'purchase#done'
     end
   end
 

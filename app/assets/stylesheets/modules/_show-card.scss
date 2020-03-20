@@ -1,0 +1,46 @@
+.main-card-done {
+  width: 700px;
+  height: 400px;
+  padding: 30px 16px 30px;
+  margin: 0 auto;
+  color: #333;
+  background-color: #fff;
+  text-align: center;
+  h2 {
+    font-size: 20px;
+    margin-top: 40px;
+  }
+  .show-card-number{
+    height: 145px;
+    font-size: 16px;
+    padding-top: 33px;
+
+  }
+  
+  .show-card-btn{
+    padding-top: 20px;
+    
+    .show-card-delete-button{
+      cursor: pointer;
+      width: 115px;
+      margin: auto;
+      border: ridge;
+      background-color: yellow;
+      height: 45px;
+      line-height: 45px;
+  
+    }
+  }
+  &__btn {
+    margin-top: 40px;
+    .signup {
+      width: 100%;
+      margin: 40px 0 20px;
+      padding:15px 100px 15px;
+      background: #3CCACE;
+      border: 1px solid #3CCACE;
+      color: #fff;
+      cursor: pointer;
+    }
+  }
+}
