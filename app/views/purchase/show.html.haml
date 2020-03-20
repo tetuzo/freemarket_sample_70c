@@ -10,10 +10,11 @@
         = image_tag "/images/credit/visa.jpg", class: "purchase-main__content__middle__buy-item__image"
         .purchase-main__content__middle__buy-item__box
           .purchase-detail
-            送料無料　SoftBank　純正　ACアダプタ　DE-SBA002 急速充電器
+            = @item.name
           .purchase-cost
             .purchase-cost__price
-              ¥500
+              ¥
+              = @item.price
             .purchase-cost__tax
               （税込）送料込み
     .purchase-main__content__lower
@@ -22,7 +23,8 @@
           .pay-money
             支払い金額
           .pay-value
-            ¥500
+            ¥
+            = @item.price
         .purchase-main__content__lower__box__pay-methods
           支払い方法
           .purchase-add
@@ -41,14 +43,18 @@
             変更する
           .purchase-main__content__lower__box__user-info__detail
             .postnumber
-              〒658-0081
+              〒
+              = @address.post_code
             .home-address
-              兵庫県 神戸市東灘区 田中町4-3-6 
+              = @address.prefecture
+              = @address.municipality
+              = @address.house_number
+              = @address.building_name
             .user-name
-              = current_user.family_name
-              = current_user.first_name
+              = @address.destination_family_name
+              = @address.destination_first_name
         .purchase-main__content__lower__box__btn
-          = form_with url: pay_purchase_index_path, method: :post, html: {name: "buy"} do |f|
+          = form_with url: purchase_path, method: :post, html: {name: "buy"} do |f|
             = f.submit "購入する", class: "buy-btn"
 
 .wrapper

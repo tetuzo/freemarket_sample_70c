@@ -1,3 +1,15 @@
-%h2 購入が完了しました！
-%p 送料無料　SoftBank　純正　ACアダプタ　DE-SBA002 急速充電器
-%p ¥500(送料込み)
+.wrapper
+  = render "header"
+  .main-card-done
+    %h2 購入が完了しました！
+    %br
+    .show-card-number
+      = @item.name
+      %br
+      ¥
+      = @item.price
+    .main-done__btn
+      = link_to "/users/#{current_user.id}", class:"signup" do
+        マイページへ戻る
+.wrapper
+  = render "footer"

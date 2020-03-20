@@ -113,6 +113,10 @@
           &__detail{
             font-weight: normal;
             padding-top: 9px;
+ 
+            .user-name{
+              padding-top: 15px;
+            }
           }
         }
         &__btn{
