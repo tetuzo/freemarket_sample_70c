@@ -573,13 +573,14 @@ button, input, select, textarea {
     .preview-box {
       height: 162px;
       width: 112px;
-      margin: 0 15px 10px 0;
+      margin: 0 10px 5px 0;
       .upper-box {
         height: 112px;
         width: 100%;
         img{
           width: 112px;
           height: 112px;
+          object-fit: cover;
         }
       }
       .lower-box {
@@ -598,7 +599,6 @@ button, input, select, textarea {
     }
   }
 
-  //投稿クリックエリアのCSS
   .label-content{
     height: 150px;
     margin-bottom: 10px;
@@ -630,8 +630,6 @@ button, input, select, textarea {
       }
     }
   }
-
-  //file_fieldのcss
   .hidden-content {
     .hidden-field {
       display: none;
@@ -831,42 +829,6 @@ button, input, select, textarea {
     }
   }
 }
-.select {
-  cursor: pointer;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  color: #222;
-  font-size: 16px;
-  height: 48px;
-  line-height: 1;
-  margin: 0;
-  outline: none;
-  padding: 0 56px 0 16px;
-  width: 100%;
-  outline: none;
-  padding: 0 56px 0 16px;
-  -webkit-appearance: none;
-  
-}
-select{
-  cursor: pointer;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  color: #222;
-  font-size: 16px;
-  height: 48px;
-  line-height: 1;
-  margin: 0;
-  outline: none;
-  padding: 0 56px 0 16px;
-  width: 100%;
-  outline: none;
-  padding: 0 56px 0 16px;
-  -webkit-appearance: none;
-}
-
 
 .arrow{
   width: 10px; 
@@ -945,7 +907,7 @@ select{
     margin-bottom: 40px;
     &__input {
       display: flex;
-      width: 100%;
+      width: 300px;
       &__area {
         align-items: center;
         width: 100%;
@@ -954,7 +916,6 @@ select{
         font-size: 16px;
         &__field {
           display: inline-block;
-          width: inherit;
         }
       }
     }
@@ -987,18 +948,21 @@ select{
   margin-right: 8px;
   font-size: 14px;
 }
-.input-price {
-  text-align: right;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  font-family: inherit;
-  font-size: inherit;
-  height: 48px;
-  margin: 0;
-  outline: none;
-  padding: 0 16px;
-  width: inherit;
+.form__price__box__calculation__input{
+  
+  .input-price {
+    text-align: right;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: inherit;
+    height: 48px;
+    margin: 0;
+    outline: none;
+    padding: 0 16px;
+    width: inherit;
+  }
 }
 
 .devide-total {
