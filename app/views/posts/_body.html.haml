@@ -13,6 +13,7 @@
           = image_tag "/images/icon/App_Store_Badge.png", class:"aBtn"
         = link_to '#' do
           = image_tag "/images/icon/Google_Play_Store_Badge.png", class:"gBtn"
+
   %section.topIntroduction
     %h2.content__subtitle
       FURIMAが選ばれる3つの理由
@@ -50,6 +51,7 @@
             業界最安
         %p.list__description
           最大3%でお得に出品&購入！
+
   %section.topMiddleDl
     .topMiddleDl__inner
       %h2.subtitle
@@ -65,6 +67,7 @@
           = image_tag "/images/icon/App_Store_Badge.png", class:"aBtn"
         = link_to '#' do
           = image_tag "/images/icon/Google_Play_Store_Badge.png", class:"gBtn" 
+
   %section.topKeyFeatures
     %h2.head
       FURIMAの特徴
@@ -90,6 +93,7 @@
           様々な支払いに対応
         %p.list__description
           お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
+
   %section.pickupContainer
     %h2.head
       ピックアップカテゴリー
@@ -99,107 +103,27 @@
           %h3.title
             新規投稿商品
       .productLists
-        .productList
-          = link_to '/items/show' do
-            %figure.productList--img
-              = image_tag "/images/icon/food_nasu_nibitashi.png"
-            .productList--body
-              %h3.name
-                ナスの煮浸し
-              .details
-                %ul
-                  %li
-                    30,000円
-                  %li
-                    %i.fa.fa-star.likeIcon
-                    0
-                %p （税込）
-        .productList
-          = link_to '#' do
-            %figure.productList--img
-              = image_tag "/images/icon/food_sandwich_blt.png"
-            .productList--body
-              %h3.name
-                サンドイッチ
-              .details
-                %ul
-                  %li
-                    10,000円
-                  %li
-                    %i.fa.fa-star.likeIcon
-                    0
-                %p （税込）
-        .productList
-          = link_to '#' do
-            %figure.productList--img
-              = image_tag "/images/icon/food_spaghetti_neapolitan.png"
-            .productList--body
-              %h3.name
-                ナポリタン
-              .details
-                %ul
-                  %li
-                    100,000円
-                  %li
-                    %i.fa.fa-star.likeIcon
-                    0
-                %p （税込）
-  %section.pickupContainer
-    %h2.head
-      ピックアップブランド
-    .productBox
-      .productHead
-        = link_to '#' do
-          %h3.title
-            アーカイバ
-      .productLists
-        .productList
-          = link_to '#' do
-            %figure.productList--img
-              = image_tag "/images/icon/food_nasu_nibitashi.png"
-            .productList--body
-              %h3.name
-                ナスの煮浸し
-              .details
-                %ul
-                  %li
-                    30,000円
-                  %li
-                    %i.fa.fa-star.likeIcon
-                    0
-                %p （税込）
-        .productList
-          = link_to '#' do
-            %figure.productList--img
-              = image_tag "/images/icon/food_sandwich_blt.png"
-            .productList--body
-              %h3.name
-                サンドイッチ
-              .details
-                %ul
-                  %li
-                    10,000円
-                  %li
-                    %i.fa.fa-star.likeIcon
-                    0
-                %p （税込）
-        .productList
-          = link_to '#' do
-            %figure.productList--img
-              = image_tag "/images/icon/food_spaghetti_neapolitan.png"
-            .productList--body
-              %h3.name
-                ナポリタン
-              .details
-                %ul
-                  %li
-                    100,000円
-                  %li
-                    %i.fa.fa-star.likeIcon
-                    0
-                %p （税込）
-= link_to new_item_path do
-  .purchaseBtn
-    %span.purchaseBtn__text
-      出品する
-    = image_tag "/images/icon/icon_camera.png", class: "purchaseBtn__icon"
+        - @items.each do |item|
+          - item.images.first(1).each do |image|
+            .productList
+              = link_to '/items/show' do
+                %figure.productList-img
+                  = image_tag image.image.url
+                    -if item.buyer_id.present?
+                    .sold 
+                      .sold__inner
+                        Sold
+                .productList-body
+                  %h3.name
+                    #{item.name}
+                  .price
+                    %ul
+                      %li
+                        #{item.price}円
+                      %li
+                        %i.fa.fa-star.likeIcon
+                        0
+                    %p (税込)
+                
+.wrapper
+  = render "purchaseBtn"
