@@ -108,8 +108,8 @@
             .productList
               = link_to '/items/show' do
                 %figure.productList-img
-                  = image_tag image.image.url
-                    -if item.buyer_id.present?
+                  -# = image_tag image.image.url　　itemテーブルにカラム追加後、実装
+                  -#   -if item.buyer_id.present?
                     .sold 
                       .sold__inner
                         Sold
