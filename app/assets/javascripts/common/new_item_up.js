@@ -1,30 +1,67 @@
-$(document).on('turbolinks:load', ()=> {
-  // 画像用のinputを生成する関数
-  const buildFileField = (index)=> {
-    const html = `<div data-index="${index}" class="js-file_group">
-                    <input class="js-file-sell" type="file"
-                    name="product[images_attributes][${index}][src]"
-                    id="product_images_attributes_${index}_src"><br>
-                    <div class="js-remove">削除</div>
-                  </div>`;
-    return html;
-  }
+console.log("ok");
+$(document).on('turbolinks:load', function(){
+  $(function(){
+    function buildHTML(count) {
+      var html = `<div class="preview-box" id="preview-box__${count}">
+                    <div class="upper-box">
+                      <img src="" alt="preview">
+                    </div>
+                    <div class="lower-box">
+                      <div class="delete-box" id="delete_btn_${count}">
+                        <span>削除</span>
+                      </div>
+                    </div>
+                  </div>`            
+      return html;
+    }
+    function setLabel() {
+      var prevContent = $('.label-content').prev();
+      labelWidth = (620 - $(prevContent).css('width').replace(/[^0-9]/g, ''));
+      console.log(prevContent);
+      $('.label-content').css('width', labelWidth);
+    }
+    $(document).on('change', '.hidden-field', function() {
+      setLabel();
+      var id = $(this).attr('id').replace(/[^0-9]/g, '');
+      $('.label-box').attr({id: `label-box--${id}`,for: `item_images_attributes_${id}_image`});
+      var file = this.files[0];
+      var reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = function() {
+        var image = this.result;
+        if ($(`#preview-box__${id}`).length == 0) {
+          var count = $('.preview-box').length;
+          var html = buildHTML(id);
+          var prevContent = $('.label-content').prev();
+          $(prevContent).append(html);
+        }
+        $(`#preview-box__${id} img`).attr('src', `${image}`);
+        var count = $('.preview-box').length;
+        if (count == 5) { 
+          $('.label-content').hide();
+        }
+        setLabel();
+        if(count < 5){
+          $('.label-box').attr({id: `label-box--${count}`,for: `item_images_attributes_${count}_image`});
+        }
+      }
+    });
+    $(document).on('click', '.delete-box', function() {
+      var count = $('.preview-box').length;
+      setLabel(count);
+      var id = $(this).attr('id').replace(/[^0-9]/g, '');
+      $(`#preview-box__${id}`).remove();
+      console.log("new")
+      $(`#item_images_attributes_${id}_image`).val("");
+      var count = $('.preview-box').length;
+      if (count == 4) {
+        $('.label-content').show();
+      }
+      setLabel(count);
 
-  // file_fieldのnameに動的なindexをつける為の配列
-  let fileIndex = [1,2,3,4,5,6,7,8,9,10];
-
-  $('#image_box_sell').on('change', '.js-file-sell', function(e) {
-    // fileIndexの先頭の数字を使ってinputを作る
-    $('#image_box_sell').append(buildFileField(fileIndex[0]));
-    fileIndex.shift();
-    // 末尾の数に1足した数を追加する
-    fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
+      if(id < 5){
+        $('.label-box').attr({id: `label-box--${id}`,for: `item_images_attributes_${id}_image`});
+      }
+    });
   });
-
-  $('#image_box_sell').on('click', '.js-remove-sell', function() {
-    $(this).parent().remove();
-    // 画像入力欄が0個にならないようにしておく
-    if ($('.js-file-sell').length == 0) $('#image_box_sell').append(buildFileField(fileIndex[0]));
-  });
-});
-
+})

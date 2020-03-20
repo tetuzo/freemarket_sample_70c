@@ -18,7 +18,7 @@ class ItemsController < ApplicationController
     @item = Item.new
     @item.images.new
     @category_parent_array = ["選択してください"]
-    #データベースから、親カテゴリーのみ抽出し、配列化
+    # データベースから、親カテゴリーのみ抽出し、配列化
       Category.where(ancestry: nil).each do |parent|
         @category_parent_array << parent.name
       end
@@ -29,7 +29,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to items_path
     else
-      redirect_to new_item_path
+      render 'new'
     end
   end
 
@@ -43,7 +43,9 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :discription, :status_id, :shipping_charges_id, :shipping_days_id, :price, :size_id, :brand_id, :prefecture_id, :category_id, images_attributes: [:image])
+
+    params.require(:item).permit(:name, :discription, :shipping_charges_id, :shipping_days_id, :price, :size_id, :category_id, :prefecture_id, :brand_id, :status_id, images_attributes: [:image])
+
   end
 
   
