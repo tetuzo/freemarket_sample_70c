@@ -16,12 +16,16 @@ class Item < ApplicationRecord
 
   validates :name, presence: true
   validates :discription, presence: true
+
+
+  
   validates :status_id, presence: true
   validates :price, presence: true
   validates :shipping_charges_id, presence: true
   validates :shipping_days_id, presence: true
   
-
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :prefecture
 
   
   # belongs_to user, foreign_key: 'user_id'
