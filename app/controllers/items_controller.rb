@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    # 詳細表示機能イメージ表示用
     # @image = Image.where(@item)
     status = Status.find(@item.status_id)
     shipping_charges = ShippingCharges.find(@item.shipping_charges_id)
