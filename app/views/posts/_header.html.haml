@@ -2,7 +2,7 @@
   .headerInner
     .mainHeader
       %h1.icon
-        = link_to "/", class: "icon_FURIMA" do
+        = link_to root_path, class: "icon_FURIMA" do
           = image_tag "/images/logo/logo.png", alt: "FURIMAのアイコン"
       .searchBox
         %input{ class: "searchBox--input", id: "searchInput", name: "key", placeholder: "キーワードから探す" }
