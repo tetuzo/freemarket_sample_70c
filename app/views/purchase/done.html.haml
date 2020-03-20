@@ -9,7 +9,7 @@
       ¥
       = @item.price
     .main-done__btn
-      = link_to "/users/#{current_user.id}", class:"signup" do
+      = link_to user_path, class:"signup" do
         マイページへ戻る
 .wrapper
   = render "footer"
