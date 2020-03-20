@@ -35,8 +35,7 @@ class PurchaseController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
-    user = User.find(current_user.id)
-    @address = user.address
+    @address = current_user.address
   end
 
 
