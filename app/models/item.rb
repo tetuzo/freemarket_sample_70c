@@ -25,8 +25,7 @@ class Item < ApplicationRecord
   validates :price, presence: true,  numericality: {greater_than_or_equal_to: 300,less_than: 10000000}
   validates :shipping_charges_id, presence: true
   validates :shipping_days_id, presence: true
-  # カテゴリー機能実装待ち
-  # validates :category_id, presence: true
+  validates :category_id, presence: true
   validates :prefecture_id, presence: true
   validates :images, presence: true
 
