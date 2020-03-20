@@ -1,5 +1,31 @@
 ja:
   activerecord:
+    attributes:
+      user:
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード(確認用)
+        nickname: ニックネーム
+
+      personal:
+        family_name: 姓
+        first_name: 名
+        family_name_kana: 姓(かな)
+        first_name_kana: 名(かな)
+        birthday_year: 誕生日(年)
+        birthday_month: 誕生日(月)
+        birthday_day: 誕生日(日)
+
+      address:
+        destination_family_name: 姓
+        destination_first_name: 名
+        destination_family_name_kana: 姓(かな)
+        destination_first_name_kana: 名(かな)
+        post_code: 郵便番号
+        prefecture: 都道府県
+        municipality: 市区町村
+        house_number: 番地
+
     models:
       # モデル名の設定
       item: 商品
@@ -14,3 +40,4 @@ ja:
         category_id: カテゴリー
         status_id: 商品の詳細
         images: 画像
+
