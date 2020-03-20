@@ -26,18 +26,18 @@ ja:
         municipality: 市区町村
         house_number: 番地
 
-    models:
-      # モデル名の設定
-      item: 商品
-    attributes:
-      item:
-        name: 商品名
-        discription: 商品の説明
-        price: 価格
-        prefecture_id: 配送元の地域
-        shipping_charges_id: 配送料の負担
-        shipping_days_id: 配送までの日数
-        category_id: カテゴリー
-        status_id: 商品の詳細
-        images: 画像
+      models:
+        # モデル名の設定
+        item: 商品
+      attributes:
+        item:
+          name: 商品名
+          discription: 商品の説明
+          price: 価格
+          prefecture_id: 配送元の地域
+          shipping_charges_id: 配送料の負担
+          shipping_days_id: 配送までの日数
+          category_id: カテゴリー
+          status_id: 商品の詳細
+          images: 画像
 
