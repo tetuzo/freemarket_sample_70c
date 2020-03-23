@@ -24,15 +24,9 @@
         %li.photo__large
           =image_tag @images[0].image.url, class: "photo__large"
         .photo__small
-          -if @images[1].present?
-            -@images.each do |image|
+          -@images.each_with_index do |image, i|
+            -if i > 0
               =image_tag image.image.url, class: "photo__small--image"
-          -# -if @images[2].present?
-          -#   =image_tag @images[2].image.url, class: "photo__small--image"
-          -# -if @images[3].present?
-          -#   =image_tag @images[3].image.url, class: "photo__small--image"
-          -# -if @images[4].present?
-          -#   =image_tag @images[4].image.url, class: "photo__small--image"
       .item__box--price
         .item__price
           %span

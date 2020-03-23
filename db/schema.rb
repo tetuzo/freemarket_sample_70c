@@ -74,7 +74,6 @@ ActiveRecord::Schema.define(version: 2020_03_20_113733) do
     t.string "brand_id"
     t.integer "prefecture_id"
     t.integer "seller_id"
-
   end
 
   create_table "personals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
