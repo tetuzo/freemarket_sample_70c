@@ -32,18 +32,18 @@ a{
   padding-left: 60px;
 }
 .item__details{
-  height: 1930px;
+  height: calc(100vh - 715px -107px);
   width: 100%;
   display: flex;
   justify-content: center;
   .item__contents{
-    height: 1900px;
+    height: 100%;
     width: 800px;
     margin-top: 40px;
     padding-right: 25px;
     padding-left: 25px;
     .item__box{
-      height: 1420px;
+      height: calc(100% - 320px);
       width: 730px;
       background-color: #ffffff;
       padding-left: 40px;
@@ -69,38 +69,31 @@ a{
           width: 590px;
           background-color: #fff;
           margin-bottom: 10px;
-          object-fit: cover;
         }
         .photo__small{
           height: 90px;
-          width: 590px;
+          width: 100%;
           display: flex;
-          justify-content: center;
           background-color: #ffffff;
-          &--left{
-            height: 90px;
-            width: 120px;
-            margin-right: 5px;
-            object-fit: cover;
+          justify-content: center;
+          &--box {
+            justify-content: center;
+            display: flex;
           }
-          &--center{
+          &--image {
+            margin: 0 5px;
+            object-fit: cover; 
             height: 90px;
             width: 120px;
-            object-fit: cover;
-          }
-          &--right{
-            height: 90px;
-            width: 120px;
-            margin-left: 5px;
-            object-fit: cover;
           }
         }
         
       }
       &--price{
-        height: 110px;
+        height: 150px;
         width: 650px;
         background-color: #ffffff;
+        margin-bottom: 10px;
         .item__price{
           height: 60px;
           width: 650px;
@@ -110,6 +103,7 @@ a{
           margin-top: 20px;
           text-align: center;
           line-height: 60px;
+
         }
         .price__info{
           height: 30px;
@@ -117,6 +111,16 @@ a{
           background-color: #ffffff;
           text-align: center;
           line-height: 30px;
+        }
+        .price__edit--btn {
+          display: inline-block;
+          width: 650px;
+          height: 60px;
+          color: white;
+          background-color: #3CCACE;
+          text-align: center;
+          font-size: 24px;
+          line-height: 60px;
         }
       }
       &--detals{

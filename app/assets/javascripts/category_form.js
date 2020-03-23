@@ -9,7 +9,7 @@ $(function(){
     var childSelectHtml = '';
     childSelectHtml = `<div class='form__detail__box__category__select__added' id= 'children_wrapper'>
                         <div class='form__detail__box__category__select__area'>
-                          <select class="select" id="child_category" name="category_id">
+                          <select class="select__sell" id="child_category" name="category_id">
                             <option value="---" data-category="---">選択してください</option>
                             ${insertHTML}
                           <select>
@@ -23,7 +23,7 @@ $(function(){
     var grandchildSelectHtml = '';
     grandchildSelectHtml = `<div class='form__detail__box__category__select__added' id= 'grandchildren_wrapper'>
                               <div class='form__detail__box__category__select__area'>
-                                <select class="select" id="grandchild_category" name=item[category_id]>
+                                <select class="select__sell" id="grandchild_category" name=item[category_id]>
                                   <option value="---" data-category="---">選択してください</option>
                                   ${insertHTML}
                                 </select>
