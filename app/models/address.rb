@@ -1,6 +1,6 @@
 class Address < ApplicationRecord
   belongs_to :user, optional: true
-  validates :prefecture, :municipality, presence: true
+  validates :prefecture, :municipality, :house_number,  presence: true
 
   name =/\A[ぁ-んァ-ン一-龥]/
   validates :destination_family_name, :destination_first_name, presence: true, format: { with: name }

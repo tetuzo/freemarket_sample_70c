@@ -1,9 +1,8 @@
 class PurchaseController < ApplicationController
 
   require 'payjp'
-  before_action :set_card
-
-  def index
+  before_action :set_card, :set_item
+  def show
     card = Card.where(user_id: current_user.id).first
     #Cardテーブルは前回記事で作成、テーブルからpayjpの顧客IDを検索
     if card.blank?
@@ -16,12 +15,13 @@ class PurchaseController < ApplicationController
       #保管したカードIDでpayjpから情報取得、カード情報表示のためインスタンス変数に代入
       @default_card_information = customer.cards.retrieve(card.card_id)
     end
+
   end
 
   def pay
     Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
     Payjp::Charge.create(
-    amount: 13500, #支払金額を入力（itemテーブル等に紐づけても良い）
+    amount: @item.price, #支払金額を入力（itemテーブル等に紐づけても良い）
     customer: @card.customer_id, #顧客ID
     currency: 'jpy', #日本円
     )
@@ -32,5 +32,12 @@ class PurchaseController < ApplicationController
   def set_card
     @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
   end
+
+  def set_item
+    @item = Item.find(params[:id])
+    @address = current_user.address
+  end
+
+
 
 end
