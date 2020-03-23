@@ -44,6 +44,14 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    item = Item.find(params[:id])
+    if item.destroy
+      flash[:notice] = "商品情報を削除しました"
+      redirect_to root_path
+    end
+  end
+
   def search_child  
     @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
   end
