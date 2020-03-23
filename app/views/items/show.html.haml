@@ -25,13 +25,14 @@
           =image_tag @images[0].image.url, class: "photo__large"
         .photo__small
           -if @images[1].present?
-            =image_tag @images[1].image.url, class: "photo__small--image"
-          -if @images[2].present?
-            =image_tag @images[2].image.url, class: "photo__small--image"
-          -if @images[3].present?
-            =image_tag @images[3].image.url, class: "photo__small--image"
-          -if @images[4].present?
-            =image_tag @images[4].image.url, class: "photo__small--image"
+            -@images.each do |image|
+              =image_tag image.image.url, class: "photo__small--image"
+          -# -if @images[2].present?
+          -#   =image_tag @images[2].image.url, class: "photo__small--image"
+          -# -if @images[3].present?
+          -#   =image_tag @images[3].image.url, class: "photo__small--image"
+          -# -if @images[4].present?
+          -#   =image_tag @images[4].image.url, class: "photo__small--image"
       .item__box--price
         .item__price
           %span
