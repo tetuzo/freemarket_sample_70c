@@ -22,24 +22,31 @@
         = @item.name
       %ul.item__box--photos
         %li.photo__large
-          
-        %ul.photo__small
-          %li
-            = image_tag "/images/pict/item_sample2.png", class: "photo__small--left"
-          %li
-            = image_tag "/images/pict/item_sample3.png", class: "photo__small--center"
-          %li
-            = image_tag "/images/pict/item_sample4.png", class: "photo__small--right"
+          =image_tag @images[0].image.url, class: "photo__large"
+        .photo__small
+          -if @images[1].present?
+            =image_tag @images[1].image.url, class: "photo__small--image"
+          -if @images[2].present?
+            =image_tag @images[2].image.url, class: "photo__small--image"
+          -if @images[3].present?
+            =image_tag @images[3].image.url, class: "photo__small--image"
+          -if @images[4].present?
+            =image_tag @images[4].image.url, class: "photo__small--image"
       .item__box--price
         .item__price
-          %span¥20000
-         
-        =link_to purchase_path do
-          購入画面
-
+          %span
+          ¥
+          =@item.price
         .price__info
           %span (税込)
           %span 送料込み
+        -# 出品者のみ情報編集ページへリンク
+        -# - if current_user != @item.seller_id
+        =link_to purchase_path, class: 'price__edit--btn' do
+          購入画面へ進む
+        -# -else
+        -#   =link_to '#', class: 'price__edit--btn' do
+        -#     情報編集画面へ進む
       .item__box--detals
         親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の
         二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をし
@@ -103,12 +110,12 @@
     .comments
       .form
         .comment__form
-        -# 実装予定のコメント機能
-          -# = form_with model: @user do |form|
-          -#   = form.text_area :comment, class: "comment__form--field"
-          -#   = form.label :comment, class: "comment__form--icon" do
-          -#     %i.fas.fa-comment
-          -#   = form.submit "コメントする", class: "form__btn"
+       
+          = form_with  do |form|
+            = form.text_area :comment, class: "comment__form--field"
+            = form.label :comment, class: "comment__form--icon" do
+              %i.fas.fa-comment
+            = form.submit "コメントする", class: "form__btn"
           
         .comment__attention
           相手のことを考え丁寧なコメントを心がけましょう。
