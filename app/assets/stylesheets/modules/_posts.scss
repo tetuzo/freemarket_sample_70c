@@ -326,7 +326,7 @@
         }
       }
       .productLists {
-        width: 1100px;
+        width: 1150px;
         margin: 26px auto;
         display: flex;
         justify-content: space-around;
@@ -498,7 +498,6 @@
 }
 *, ::before, ::after {
   box-sizing: border-box;
-
 }
 
 button, input, select, textarea {
@@ -1020,4 +1019,10 @@ button, input, select, textarea {
 .link {
   color: #0095ee;
   text-decoration: none;
+}
+
+.flash__NoLogIn--error{
+  background-color: #3ccace;
+  color: #fff;
+  text-align: center;
 }
