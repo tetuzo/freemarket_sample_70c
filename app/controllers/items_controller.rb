@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user,   only: [:new ]
-
+  before_action :set_item,            only: [:buy, :destroy]
+  
   def index
     @items = Item.includes(:images)
   end
@@ -27,7 +28,6 @@ class ItemsController < ApplicationController
   end
 
   def buy
-    item = Item.find(params[:id])
     if item.update(buyer_id: current_user.id)
       redirect_to done_purchase_index_path
     else
@@ -45,7 +45,6 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    item = Item.find(params[:id])
     if item.destroy
       flash[:notice] = "商品情報を削除しました"
       redirect_to root_path
@@ -71,4 +70,7 @@ class ItemsController < ApplicationController
 
   end
 
+  def set_item
+    item = Item.find(params[:id])
+  end
 end
