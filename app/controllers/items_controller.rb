@@ -28,8 +28,11 @@ class ItemsController < ApplicationController
 
   def buy
     item = Item.find(params[:id])
-    item.update(buyer_id: current_user.id)
-    redirect_to controller: :purchase, action: :done
+    if item.update(buyer_id: current_user.id)
+      redirect_to done_purchase_index_path
+    else
+      redirect_to purchase_path
+    end
   end
 
   def create

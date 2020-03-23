@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     collection do
       post 'pay/:id', to: 'purchase#pay'
       post '/:id', to: 'purchase#pay' 
-      get 'done/:id', to: 'purchase#done'
+      get 'done/:id', to: 'purchase#done', as: :done
     end
   end
 

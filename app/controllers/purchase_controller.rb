@@ -25,7 +25,7 @@ class PurchaseController < ApplicationController
     customer: @card.customer_id, #顧客ID
     currency: 'jpy', #日本円
     )
-    redirect_to controller: :items, action: :buy #itemsコントローラーのupdateアクションへ
+    redirect_to buyer_item_path #itemsコントローラーのupdateアクションへ
   end
   
   private
