@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user,   only: [:new ]
+
   def index
     @items = Item.includes(:images)
   end
@@ -40,10 +42,14 @@ class ItemsController < ApplicationController
     @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
 
+  def authenticate_user
+    redirect_to new_user_session_path unless user_signed_in?  
+  end
+
   private
   def item_params
 
-    params.require(:item).permit(:name, :discription, :shipping_charges_id, :shipping_days_id, :price, :size_id, :category_id, :prefecture_id, :brand_id, :status_id, images_attributes: [:image])
+    params.require(:item).permit(:name, :discription, :shipping_charges_id, :shipping_days_id, :price, :size_id, :category_id, :prefecture_id, :brand_id, :status_id, images_attributes: [:image]).merge(seller_id: current_user.id)
 
   end
 

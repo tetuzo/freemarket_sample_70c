@@ -21,15 +21,9 @@ class Item < ApplicationRecord
 
   validates :name, presence: true, length: { maximum:40 }
   validates :discription, presence: true, length: { maximum: 1000 }
-  validates :status_id, presence: true
   validates :price, presence: true,  numericality: {greater_than_or_equal_to: 300,less_than: 10000000}
-  validates :shipping_charges_id, presence: true
-  validates :shipping_days_id, presence: true
-  # カテゴリー機能実装待ち
-  # validates :category_id, presence: true
-  validates :prefecture_id, presence: true
-  validates :images, presence: true
-
+  validates :shipping_charges_id, :status_id, :shipping_days_id, :category_id, :prefecture_id, presence: true
+  
 
   
   extend ActiveHash::Associations::ActiveRecordExtensions
