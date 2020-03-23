@@ -7,7 +7,7 @@
       購入を確定しますか？
     .purchase-main__content__middle
       .purchase-main__content__middle__buy-item
-        = image_tag "/images/credit/visa.jpg", class: "purchase-main__content__middle__buy-item__image"
+        = image_tag @image.image.url, class: "purchase-main__content__middle__buy-item__image"
         .purchase-main__content__middle__buy-item__box
           .purchase-detail
             = @item.name

@@ -3,6 +3,7 @@ class PurchaseController < ApplicationController
   require 'payjp'
   before_action :set_card, :set_item
   def show
+    @image = Image.find_by(item_id: @item[:id])
     card = Card.where(user_id: current_user.id).first
     #Cardテーブルは前回記事で作成、テーブルからpayjpの顧客IDを検索
     if card.blank?
