@@ -56,6 +56,19 @@
               cursor: pointer;
               -webkit-appearance: none;
             }
+            .arrow-birthday {
+              width: 10px; 
+              height: 10px; 
+              border-top: 1px solid rgb(136, 136, 136);
+              border-right: 1px solid rgb(136, 136, 136);
+              display: inline-block; 
+              transform: rotate(135deg);
+              position: absolute;
+              top: -7px;
+              right: 10px;
+              bottom: 0;
+              margin: auto;
+            }
           }
         }
       }
@@ -121,6 +134,7 @@
         &__prefecture {
           display: flex;
           &__tag {
+            width: 25%;
             height: 50px;
             display: flex;
             position: relative;
@@ -131,6 +145,19 @@
               width: 100%;
               cursor: pointer;
               -webkit-appearance: none;
+            }
+            .arrow-address {
+              width: 10px; 
+              height: 10px; 
+              border-top: 1px solid rgb(136, 136, 136);
+              border-right: 1px solid rgb(136, 136, 136);
+              display: inline-block; 
+              transform: rotate(135deg);
+              position: absolute;
+              top: -7px;
+              right: 10px;
+              bottom: 0;
+              margin: auto;
             }
           }
         }

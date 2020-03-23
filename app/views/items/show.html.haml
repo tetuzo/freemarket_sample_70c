@@ -32,9 +32,11 @@
             = image_tag "/images/pict/item_sample4.png", class: "photo__small--right"
       .item__box--price
         .item__price
-          %span
-            ¥
-            = @item.price
+          %span¥20000
+         
+        =link_to purchase_path do
+          購入画面
+
         .price__info
           %span (税込)
           %span 送料込み
