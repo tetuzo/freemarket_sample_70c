@@ -73,8 +73,8 @@ ActiveRecord::Schema.define(version: 2020_03_20_121430) do
     t.integer "category_id"
     t.string "brand_id"
     t.integer "prefecture_id"
-    t.integer "buyer_id"
     t.integer "seller_id"
+    t.integer "buyer_id"
   end
 
   create_table "personals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

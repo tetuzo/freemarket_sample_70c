@@ -8,6 +8,7 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @images = Image.where(item_id: @item[:id]).order("updated_at DESC").limit(5)
+    @user = User.find(@item[:seller_id])
     status = Status.find(@item.status_id)
     shipping_charges = ShippingCharges.find(@item.shipping_charges_id)
     prefecture = Prefecture.find(@item.prefecture_id)
