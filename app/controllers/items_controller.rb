@@ -24,6 +24,12 @@ class ItemsController < ApplicationController
       end
   end
 
+  def buy
+    item = Item.find(params[:id])
+    item.update(buyer_id: current_user.id)
+    redirect_to controller: :purchase, action: :done
+  end
+
   def create
     @item = Item.new(item_params)
     if @item.save
@@ -48,5 +54,4 @@ class ItemsController < ApplicationController
 
   end
 
-  
 end
