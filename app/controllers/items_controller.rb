@@ -26,6 +26,15 @@ class ItemsController < ApplicationController
       end
   end
 
+  def buy
+    item = Item.find(params[:id])
+    if item.update(buyer_id: current_user.id)
+      redirect_to done_purchase_index_path
+    else
+      redirect_to purchase_path
+    end
+  end
+
   def create
     @item = Item.new(item_params)
     if @item.save
@@ -54,5 +63,4 @@ class ItemsController < ApplicationController
 
   end
 
-  
 end
