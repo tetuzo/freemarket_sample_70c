@@ -109,7 +109,7 @@
               = link_to item_path(item.id) do
                 %figure.productList-img
                   = image_tag image.image.url
-                    -if item.buyer.present?
+                    -if item.buyer_id.present?
                     .sold 
                       .sold__inner
                         Sold
