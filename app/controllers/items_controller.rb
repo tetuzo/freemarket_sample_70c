@@ -35,6 +35,20 @@ class ItemsController < ApplicationController
     end
   end
 
+  def edit
+    @item = Item.find(params[:id])
+    @category_parent_array = ["選択してください"]
+      Category.where(ancestry: nil).each do |parent|
+        @category_parent_array << parent.name
+      end
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    @item.update(item_params)
+    redirect_to root_path
+  end
+
   def search_child  
     @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
   end
@@ -49,10 +63,11 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-
-    params.require(:item).permit(:name, :discription, :shipping_charges_id, :shipping_days_id, :price, :size_id, :category_id, :prefecture_id, :brand_id, :status_id, images_attributes: [:image]).merge(seller_id: current_user.id)
-
+    params.require(:item).permit(:name, :discription, :shipping_charges_id, :shipping_days_id, :price, :size_id, :category_id, :prefecture_id, :brand_id, :status_id, images_attributes: [:image, :_destroy, :id]).merge(seller_id: current_user.id)
   end
 
+  # def item_update_params
+  #   params.require(:item).permit(:name, :discription, :shipping_charges_id, :shipping_days_id, :price, :size_id, :category_id, :prefecture_id, :brand_id, :status_id, images_attributes: [:image, :_destroy, :id]).merge(seller_id: current_user.id)
+  # end
   
 end

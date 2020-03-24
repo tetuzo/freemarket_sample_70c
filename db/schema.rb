@@ -66,15 +66,17 @@ ActiveRecord::Schema.define(version: 2020_03_20_113733) do
     t.integer "price", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "category_id"
+    t.bigint "seller_id"
+    t.bigint "buyer_id"
     t.integer "size_id"
     t.integer "shipping_charges_id"
     t.integer "shipping_days_id"
     t.integer "status_id"
+    t.integer "category_id"
     t.string "brand_id"
     t.integer "prefecture_id"
-    t.integer "seller_id"
-
+    t.index ["buyer_id"], name: "index_items_on_buyer_id"
+    t.index ["seller_id"], name: "index_items_on_seller_id"
   end
 
   create_table "personals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -98,11 +100,13 @@ ActiveRecord::Schema.define(version: 2020_03_20_113733) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "trades", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "seller_id"
-    t.integer "buyer_id"
+  create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "provider"
+    t.string "uid"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sns_credentials_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -120,4 +124,5 @@ ActiveRecord::Schema.define(version: 2020_03_20_113733) do
 
   add_foreign_key "cards", "users"
   add_foreign_key "images", "items"
+  add_foreign_key "sns_credentials", "users"
 end

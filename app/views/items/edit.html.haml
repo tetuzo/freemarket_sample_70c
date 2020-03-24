@@ -1,10 +1,10 @@
 .wrapper
-  = render "devise/registrations/header"
-
-.sell
-  .sell__main
-    .sell__main__form
-      .sell__main__form__content
+  = render "posts/header"
+  
+.edit
+  .edit__main
+    .edit__main__form
+      .edit__main__form__content
         = form_with model: @item, local: true do |f|
           .form__image__box
             .form__list
@@ -18,19 +18,27 @@
               最大5枚までアップロード出来ます
             .post__drop__box__container
               .prev-content
+                - @item.images.each do |image|
+                  .preview-box
+                    .upper-box
+                      = image_tag image.image.url, width: "112", height: "112", alt: "preview"
+                    .lower-box
+                      .delete-box
+                        .delete-btn
+                          %span 削除
               .label-content
                 %label{for: "item_images_attributes_0_image", class: "label-box", id: "label-box--0"}
                   %pre.label-box__text-visible 
                     %i.fa.fa-camera.item_sell_cameraIcon
                     ドラッグアンドドロップ
                     またはクリックしてファイルをアップロード
-              .hidden-content
-                = f.fields_for :images do |i|
-                  = i.file_field :image, class: "hidden-field", id: "item_images_attributes_0_image"
-                  %input{class:"hidden-field", type: "file", name: "item[images_attributes][1][image]", id: "item_images_attributes_1_image", accept: "image/png,image/jpeg,image/gif" }
-                  %input{class:"hidden-field", type: "file", name: "item[images_attributes][2][image]", id: "item_images_attributes_2_image" }
-                  %input{class:"hidden-field", type: "file", name: "item[images_attributes][3][image]", id: "item_images_attributes_3_image" }
-                  %input{class:"hidden-field", type: "file", name: "item[images_attributes][4][image]", id: "item_images_attributes_4_image" }
+            .hidden-content
+              = f.fields_for :images do |i|
+                = i.file_field :image, class: "hidden-field"
+                = i.check_box:_destroy, class: "hidden-checkbox"
+              - @item.images.length.upto(4) do |i|
+                %input{name: "item[images_attributes][#{i}][image]", id: "item_images_attributes_#{i}_image", class:"hidden-field", type:"file"}
+
           %hr.devide
           .form__text__box
             .form__text__box__name
@@ -183,10 +191,10 @@
                   販売利益
                 %span{}ー
             .form__price__box__button
-              = f.submit '出品する', class: 'draft'
-              = f.button '下書きに保存', class: 'exhibition'
+              = f.submit '編集完了', class: 'draft'
               = link_to root_path, class: 'link-root' do
-                もどる
+                キャンセル
+                
             %p.terms
               禁止されている
               = link_to '#', class: 'link' do
@@ -205,5 +213,6 @@
                 加盟店規約
               に同意したことになります。
 
+
 .wrapper
-  = render "devise/registrations/footer"
+  = render "posts/footer"
