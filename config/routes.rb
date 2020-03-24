@@ -26,15 +26,19 @@ Rails.application.routes.draw do
     collection do
       post 'pay/:id', to: 'purchase#pay'
       post '/:id', to: 'purchase#pay' 
-      get 'done/:id', to: 'purchase#done'
+      get 'done/:id', to: 'purchase#done', as: :done
     end
   end
 
 
-  resources :items, only: [:index, :new, :create, :show, :edit, :update] do
+  resources :items, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
     collection do
       get 'search_child', defaults: { format: 'json' }
       get 'search_grandchild', defaults: { format: 'json' }
+    end
+    member do
+      patch 'buyer', to: 'items#buy'
+      get 'buyer', to: 'items#buy'
     end
   end
 end

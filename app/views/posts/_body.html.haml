@@ -106,7 +106,7 @@
         - @items.each do |item|
           - item.images.first(1).each do |image|
             .productList
-              = link_to '/items/show' do
+              = link_to item_path(item.id) do
                 %figure.productList-img
                   = image_tag image.image.url
                     -if item.buyer.present?
@@ -115,11 +115,12 @@
                         Sold
                 .productList-body
                   %h3.name
-                    #{item.name}
+                    =item.name
                   .price
                     %ul
                       %li
-                        #{item.price}円
+                        =item.price
+                        円
                       %li
                         %i.fa.fa-star.likeIcon
                         0

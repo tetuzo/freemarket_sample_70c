@@ -3,6 +3,7 @@ class PurchaseController < ApplicationController
   require 'payjp'
   before_action :set_card, :set_item
   def show
+    @image = Image.find_by(item_id: @item[:id])
     card = Card.where(user_id: current_user.id).first
     #Cardテーブルは前回記事で作成、テーブルからpayjpの顧客IDを検索
     if card.blank?
@@ -25,7 +26,7 @@ class PurchaseController < ApplicationController
     customer: @card.customer_id, #顧客ID
     currency: 'jpy', #日本円
     )
-    redirect_to action: 'done' #完了画面に移動
+    redirect_to buyer_item_path #itemsコントローラーのupdateアクションへ
   end
   
   private
