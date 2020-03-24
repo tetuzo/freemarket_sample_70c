@@ -39,6 +39,4 @@ class PurchaseController < ApplicationController
     @address = current_user.address
   end
 
-
-
 end
