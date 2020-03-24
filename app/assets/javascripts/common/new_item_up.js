@@ -65,3 +65,22 @@ $(document).on('turbolinks:load', function(){
     });
   });
 })
+
+//------手数料等
+
+$(function(){
+  $('#show_price_input').on('input', function(){
+    var data = $('#show_price_input').val();
+    var profit = Math.round(data * 0.9)
+    var fee = (data - profit)
+    $('.price__comission--put').html(fee)
+    $('.price__comission--put').prepend('¥')
+    $('.price__profit--put').html(profit)
+    $('.price__profit--put').prepend('¥')
+    $('#price').val(profit)
+    if(profit == '') {
+    $('.price__profit--put').html('');
+    $('.price__comission--put').html('');
+    }
+  })
+})
