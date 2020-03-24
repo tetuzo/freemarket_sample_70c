@@ -36,12 +36,18 @@
           %span (税込)
           %span 送料込み
         -# 出品者のみ情報編集ページへリンク
-        -# - if current_user != @item.seller_id
-        =link_to purchase_path, class: 'price__edit--btn' do
-          購入画面へ進む
-        -# -else
-        -#   =link_to '#', class: 'price__edit--btn' do
-        -#     情報編集画面へ進む
+        - if current_user.id != @item.seller_id
+          =link_to purchase_path, class: 'price__edit__delete--btn' do
+            購入画面へ進む
+        - else
+          =link_to '#', class: 'price__edit__delete--btn' do
+            情報編集画面へ進む
+          = link_to item_path, class: 'price__edit__delete--btn',onclick: "clickEvent()", method: :delete do
+            商品情報を削除する
+            :javascript
+              function clickEvent() {
+                alert( "商品情報を削除します" );
+              }
       .item__box--detals
         親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の
         二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をし
@@ -52,7 +58,8 @@
       %table.item__box--info
         %tr.username
           %th 出品者
-          %td hoge
+          %td
+            =@user.nickname
         %tr.item__categoly
           %th.item__categoly--showPage カテゴリー
           %td
@@ -105,7 +112,6 @@
     .comments
       .form
         .comment__form
-       
           = form_with  do |form|
             = form.text_area :comment, class: "comment__form--field"
             = form.label :comment, class: "comment__form--icon" do

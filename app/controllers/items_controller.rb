@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user,   only: [:new ]
-
+  before_action :set_item,            only: [:buy, :destroy]
+  
   def index
     @items = Item.includes(:images)
   end
@@ -8,6 +9,7 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @images = Image.where(item_id: @item[:id]).order("updated_at DESC").limit(5)
+    @user = User.find(@item[:seller_id])
     status = Status.find(@item.status_id)
     shipping_charges = ShippingCharges.find(@item.shipping_charges_id)
     prefecture = Prefecture.find(@item.prefecture_id)
@@ -26,7 +28,6 @@ class ItemsController < ApplicationController
   end
 
   def buy
-    item = Item.find(params[:id])
     if item.update(buyer_id: current_user.id)
       redirect_to done_purchase_index_path
     else
@@ -40,6 +41,13 @@ class ItemsController < ApplicationController
       redirect_to items_path
     else
       render 'new'
+    end
+  end
+
+  def destroy
+    if item.destroy
+      flash[:notice] = "商品情報を削除しました"
+      redirect_to root_path
     end
   end
 
@@ -62,4 +70,7 @@ class ItemsController < ApplicationController
 
   end
 
+  def set_item
+    item = Item.find(params[:id])
+  end
 end
