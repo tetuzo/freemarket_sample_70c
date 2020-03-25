@@ -22,7 +22,8 @@ class Item < ApplicationRecord
   validates :name, presence: true, length: { maximum:40 }
   validates :discription, presence: true, length: { maximum: 1000 }
   validates :price, presence: true,  numericality: {greater_than_or_equal_to: 300,less_than: 10000000}
-  validates :shipping_charges_id, :status_id, :shipping_days_id, :category_id, :prefecture_id, presence: true
+  validates :shipping_charges_id, :images, :status_id, :shipping_days_id, :category_id, :prefecture_id, presence: true
+  
 
   def self.search(search)
     return Item.all unless search
