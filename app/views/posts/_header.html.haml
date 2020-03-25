@@ -5,10 +5,11 @@
         = link_to root_path, class: "icon_FURIMA" do
           = image_tag "/images/logo/logo.png", alt: "FURIMAのアイコン"
       .searchBox
-        %input{ class: "searchBox--input", id: "searchInput", name: "key", placeholder: "キーワードから探す" }
-        %button{ type: "submit" }
-          .searchBox__icon
-            = image_tag "/images/icon/icon-search 1.png"
+        =form_with url: items_searches_path, local: true, method: :get, class: "searchBox-form" do |f|
+          =f.text_field :keyword, placeholder: "キーワードで探す", class: "searchBox-input"
+          =f.submit " ", class: "search-btn"
+          .searchBox-icon
+            = image_tag "/images/icon/icon-search 1.png", class: 'search_icon'
     .nav
       %ul.listsLeft
         %li.listsLeft__item.listsLeft__item--first
