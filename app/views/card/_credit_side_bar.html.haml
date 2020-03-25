@@ -1,7 +1,7 @@
 .side_bar
   %ul.side_bar__ul
     %li.side_bar__ul__li
-      =link_to "/users", class:"side_bar__ul__li__item" do
+      =link_to "/users/#{current_user.id}", class:"side_bar__ul__li__item" do
         .side_bar__ul__li__item__box
           マイページ
         .side_bar__ul__li__item__arrow
