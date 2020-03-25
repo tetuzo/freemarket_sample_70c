@@ -30,6 +30,10 @@ Rails.application.routes.draw do
     end
   end  
 
+  namespace :items do
+    resources :searches, only: :index
+  end
+
   resources :items, only: [:index, :new, :create, :show, :destroy] do
     collection do
       get 'search_child', defaults: { format: 'json' }
@@ -40,7 +44,5 @@ Rails.application.routes.draw do
       get 'buyer', to: 'items#buy'
     end
   end
-  namespace :items do
-    resources :searches, only: :index
-  end
+  
 end
