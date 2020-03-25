@@ -1,13 +1,12 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user,   only: [:new ]
-  before_action :set_item,            only: [:buy, :destroy]
+  before_action :set_item,            only: [:show, :buy, :destroy]
   
   def index
     @items = Item.includes(:images)
   end
 
   def show
-    @item = Item.find(params[:id])
     @images = Image.where(item_id: @item[:id]).order("updated_at DESC").limit(5)
     @user = User.find(@item[:seller_id])
     status = Status.find(@item.status_id)
@@ -45,11 +44,12 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    if item.destroy
+    if @item.destroy
       flash[:notice] = "商品情報を削除しました"
       redirect_to root_path
     end
   end
+
 
   def search_child  
     @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
@@ -71,6 +71,6 @@ class ItemsController < ApplicationController
   end
 
   def set_item
-    item = Item.find(params[:id])
+    @item = Item.find(params[:id])
   end
 end

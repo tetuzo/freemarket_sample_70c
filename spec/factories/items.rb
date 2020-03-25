@@ -9,6 +9,7 @@ FactoryBot.define do
     shipping_days_id      {1}
     category_id           {223}
     prefecture_id         {1}
+    created_at { Faker::Time.between(from: DateTime.now - 2, to: DateTime.now) }
 
   end
 

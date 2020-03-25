@@ -28,9 +28,11 @@ Rails.application.routes.draw do
       post '/:id', to: 'purchase#pay' 
       get 'done/:id', to: 'purchase#done', as: :done
     end
+  end  
+
+  namespace :items do
+    resources :searches, only: :index
   end
-
-
   resources :items, only: [:index, :new, :create, :show, :destroy] do
     collection do
       get 'search_child', defaults: { format: 'json' }

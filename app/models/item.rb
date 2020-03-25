@@ -6,7 +6,7 @@ class Item < ApplicationRecord
   belongs_to :trde, optional: true
   belongs_to :buyer, class_name: 'User', :foreign_key => 'buyer_id', optional: true
   belongs_to :seller, class_name: 'User', :foreign_key => 'seller_id', optional: true
-
+  belongs_to :category, optional: true
 
 
   extend ActiveHash::Associations::ActiveRecordExtensions
@@ -23,13 +23,10 @@ class Item < ApplicationRecord
   validates :discription, presence: true, length: { maximum: 1000 }
   validates :price, presence: true,  numericality: {greater_than_or_equal_to: 300,less_than: 10000000}
   validates :shipping_charges_id, :status_id, :shipping_days_id, :category_id, :prefecture_id, presence: true
-  
 
-  
-  extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to_active_hash :prefecture
-
-  
-  # belongs_to user, foreign_key: 'user_id'
-  belongs_to :category, optional: true
+  def self.search(search)
+    return Item.all unless search
+    Item.where('name LIKE(?)', "%#{search}%")
+    Item.where('discription LIKE(?)', "%#{search}%")
+  end
 end
