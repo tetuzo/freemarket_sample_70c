@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user,   only: [:new ]
   before_action :set_item,            only: [:show, :buy, :destroy]
+  before_action :cate_map_error, only: [:new, :create, :edit, :update]
   
   def index
     @items = Item.includes(:images)
@@ -72,5 +73,13 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def cate_map_error
+    @category_parent_array = ["選択してください"]
+    # データベースから、親カテゴリーのみ抽出し、配列化
+      Category.where(ancestry: nil).each do |parent|
+        @category_parent_array << parent.name
+      end
   end
 end

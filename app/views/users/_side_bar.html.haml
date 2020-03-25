@@ -21,7 +21,7 @@
           いいね ! 一覧
         .side_bar__ul__li__item__arrow
         
-      =link_to "#", class:"side_bar__ul__li__item" do
+      =link_to new_item_path, class:"side_bar__ul__li__item" do
         .side_bar__ul__li__item__box
           出品する
         .side_bar__ul__li__item__arrow
@@ -89,7 +89,7 @@
         .side_bar__config-ul__li__item__box
           支払い方法
         .side_bar__config-ul__li__item__arrow
-      =link_to purchase_path, class:"side_bar__config-ul__li__item"do
+      =link_to "#", class:"side_bar__config-ul__li__item"do
         .side_bar__config-ul__li__item__box
           購入確認画面
         .side_bar__config-ul__li__item__arrow
@@ -101,7 +101,7 @@
         .side_bar__config-ul__li__item__box
           電話番号の確認法
         .side_bar__config-ul__li__item__arrow
-      =link_to "#", class:"side_bar__config-ul__li__item"do
+      =link_to destroy_user_session_path, method: :delete, class:"side_bar__config-ul__li__item"do
         .side_bar__config-ul__li__item__box
           ログアウト
         .side_bar__config-ul__li__item__arrow
