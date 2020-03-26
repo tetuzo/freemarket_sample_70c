@@ -24,7 +24,7 @@ class ItemsController < ApplicationController
   end
 
   def buy
-    if item.update(buyer_id: current_user.id)
+    if @item.update(buyer_id: current_user.id)
       redirect_to done_purchase_index_path
     else
       redirect_to purchase_path
@@ -81,6 +81,7 @@ class ItemsController < ApplicationController
       redirect_to root_path
     end
   end
+
 
   def search_child  
     @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children

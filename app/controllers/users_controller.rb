@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   def show
-  end
+    
+    seller = Item.group(:seller_id).count
+    @number_of_exhibitions_item = seller[current_user.id]
 
-  def show
   end
 end

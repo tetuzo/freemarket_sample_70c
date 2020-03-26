@@ -3,7 +3,7 @@
     .content
       %h2.content__subtitle
         %br
-        人生を変えるフリマアプリ
+        人生を変えるフリマアプリ DeployTest
       %p.content__text
         FURIMAはだれでもかんたんに出品・購入できる 
         %br
@@ -108,7 +108,7 @@
               = link_to item_path(item.id) do
                 %figure.productList-img
                   = image_tag image.image.url
-                    -if item.buyer.present?
+                    -if item.buyer_id.present?
                     .sold 
                       .sold__inner
                         Sold

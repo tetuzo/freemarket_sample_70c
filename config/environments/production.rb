@@ -91,4 +91,6 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  # master keyが指定されてない状態でサーバ起動を実行しようとするとエラーが発生します
+  config.require_master_key = true
 end

@@ -6,16 +6,14 @@
       .main_content__profile__body__name
         #{current_user.nickname}
       .main_content__profile__body__info
-        .main_content__profile__body__info__review
-          評価
-          -# 評価数を反映させる
-        .main_content__profile__body__info__review-number
-          45
         .main_content__profile__body__info__sell
           出品数
           -# 出品数を反映させる
         .main_content__profile__body__info__sell-number
-          10
+          -if @number_of_exhibitions_item == nil
+            0
+          -else
+            = @number_of_exhibitions_item
 
 
   .tabs

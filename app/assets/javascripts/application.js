@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require activestorage
-//= require_tree .
 //= require jquery_ujs
+//= require_tree .
+
 
