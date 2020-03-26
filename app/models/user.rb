@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_one :personal, dependent: :destroy
   has_one :address, dependent: :destroy
 
-  email = /\A\d{3}[-]\d{4}\z/
+  email = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: email }
   has_many :items
   has_many :favorites
