@@ -1,0 +1,19 @@
+.wrapper
+  = render "devise/registrations/header"
+.main__sell--body
+  .sell__complete
+    .sell__complete--message
+      出品が完了しました
+    .sell__complete--link
+      .sell__complete--box
+        %button{class: "sell__complete--continue", onclick: "location.href='/'"}トップページに戻る
+        = link_to item_path(@item) do
+          %button{class: "sell__complete--itemShow"}出品した商品を見る
+      -# あとで使う予定
+      -# %button{class: "sell__complete--continue", onclick: "location.href='/items/new'"}続けて出品する
+        -# = link_to edit_item_path(@item.id), class: 'edit--btn' do
+        -#   情報編集画面へ進む
+        -# %button{class: "sell__complete--itemShow", onclick: "location.href=''"}出品した商品をみる
+
+.wrapper
+  = render "devise/registrations/footer"

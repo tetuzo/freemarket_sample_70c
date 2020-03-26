@@ -1,10 +1,10 @@
 .wrapper
-  = render "devise/registrations/header"
-
-.sell
-  .sell__main
-    .sell__main__form
-      .sell__main__form__content
+  = render "posts/header"
+  
+.edit
+  .edit__main
+    .edit__main__form
+      .edit__main__form__content
         = form_with model: @item, local: true do |f|
           .form__image__box
             .form__list
@@ -18,19 +18,28 @@
               最大5枚までアップロード出来ます
             .post__drop__box__container
               .prev-content
+                - @item.images.each do |image|
+                  .preview-box
+                    .upper-box
+                      = image_tag image.image.url, width: "112", height: "112", alt: "preview"
+                    .lower-box
+                      .delete-box
+                        .delete-btn
+                          %span 削除
               .label-content
-                %label{for: "item_images_attributes_0_image", class: "label-box", id: "label-box--0"}
+                %label{for: "item_images_attributes_#{@item.images.count}_image", class: "label-box", id: "label-box--0"}
                   %pre.label-box__text-visible 
                     %i.fa.fa-camera.item_sell_cameraIcon
                     ドラッグアンドドロップ
                     またはクリックしてファイルをアップロード
-              .hidden-content
-                = f.fields_for :images do |i|
-                  = i.file_field :image, class: "hidden-field", id: "item_images_attributes_0_image"
-                  %input{class:"hidden-field", type: "file", name: "item[images_attributes][1][image]", id: "item_images_attributes_1_image", accept: "image/png,image/jpeg,image/gif" }
-                  %input{class:"hidden-field", type: "file", name: "item[images_attributes][2][image]", id: "item_images_attributes_2_image" }
-                  %input{class:"hidden-field", type: "file", name: "item[images_attributes][3][image]", id: "item_images_attributes_3_image" }
-                  %input{class:"hidden-field", type: "file", name: "item[images_attributes][4][image]", id: "item_images_attributes_4_image" }
+            .hidden-content
+              = f.fields_for :images do |i|
+                = i.file_field :image, class: "hidden-field"
+                = i.check_box:_destroy, class: "hidden-checkbox"
+              - @item.images.length.upto(4) do |i|
+                %input{name: "item[images_attributes][#{i}][image]", id: "item_images_attributes_#{i}_image", class:"hidden-field", type:"file"}
+              = f.file_field :image, name: "item[images_attributes][#{@item.images.count}][image]", id: "item_images_attributes_#{@item.images.count}_image"
+
           %hr.devide
           .form__text__box
             .form__text__box__name
@@ -73,10 +82,9 @@
                   必須
                 - @item.errors.full_messages_for(:category_id).each do |message|
                   = message
-              .form__detail__box__category__select
-                .form__detail__box__category__select__area
-                  = f.select :category_id, @category_parent_array, {}, {class: 'select__sell', id: 'parent_category', name: "category_id"}
-                .arrow
+              .form__detail__box__category__select__area1
+                = f.select :parent_name, @category_parent_array, {selected:@item.category.parent.parent.name}, { class: 'select__sell', id: 'parent_category'}
+                .arrow_edit
             .form__detail__box__brand
               .form__list
                 .form__list__logo
@@ -162,22 +170,21 @@
                   ¥
                 .form__price__box__calculation__input__area
                   .form__price__box__calculation__input__area__field
-                    = f.number_field :price, class: 'input-price', id: 'show_price_input',placeholder: '0'
+                    = f.number_field :price, class: 'input-price', placeholder: '0'
               .form__price__box__comission
                 .form__price__box__comission__label
                   販売手数料 (10%)
-                %span.price__comission--put
-
+                %span{}¥ -
               %hr.devide-total 
               .form__price__box__profit
                 .form__price__box__profit__label
                   販売利益
-                %span.price__profit--put
-
+                %span{}¥ -
             .form__price__box__button
-              = f.submit '出品する', class: 'draft'
+              = f.submit '更新する', class: 'draft'
               = link_to root_path, class: 'link-root' do
-                もどる
+                キャンセル
+
             %p.terms
               禁止されている
               = link_to '#', class: 'link' do
@@ -196,5 +203,6 @@
                 加盟店規約
               に同意したことになります。
 
+
 .wrapper
-  = render "devise/registrations/footer"
+  = render "posts/footer"

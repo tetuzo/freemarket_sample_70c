@@ -51,6 +51,7 @@
                   width: calc(100% - 72px);
                   height: 36px;
                   padding: 0 0 0 5px;
+                  vertical-align: top;
                 }
               }
               
@@ -59,14 +60,15 @@
                 height: 36px;
                 cursor: pointer;
                 background-color: #3CCACE;
-                text-decoration: none;
+                border: none;
               }
-              .search_icon {
-                width: 20px;
-                height: 20px;
+              .fa.fa-search {
+                font-size: 20px;
+                color: #ffffff;
                 position: absolute;
                 top: 25px;
                 right: 40px;
+                
               }
             }
         }
@@ -326,7 +328,7 @@
     }
       .productHead {
         text-align: center;
-        a {
+        .title {
           font-size: 24px;
           text-decoration: none;
           color: #3CCACE;
@@ -336,7 +338,7 @@
         }
       }
       .productLists {
-        width: 1150px;
+        width: 80%;
         margin: 26px auto;
         display: flex;
         justify-content: space-around;

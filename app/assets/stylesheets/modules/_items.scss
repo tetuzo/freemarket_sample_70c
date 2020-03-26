@@ -403,6 +403,24 @@ button, input, select, textarea {
   }
 }
 
+.select__sell {
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #222;
+  font-size: 16px;
+  height: 48px;
+  margin: 0;
+  outline: none;
+  padding: 0 56px 0 16px;
+  width: 100%;
+  outline: none;
+  padding: 0 56px 0 16px;
+  -webkit-appearance: none;
+  margin-bottom: 5px;
+}
+
 .arrow{
   width: 10px; 
   height: 10px; 
