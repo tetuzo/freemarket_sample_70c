@@ -1,5 +1,8 @@
 .wrapper
   = render "posts/header"
+.gretel
+  - breadcrumb :card
+  = breadcrumbs separator: " &rsaquo; "
 .wrapper_main
   .wrapper-credit
     = render "card/credit_side_bar"

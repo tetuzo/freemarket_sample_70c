@@ -521,16 +521,11 @@ button, input, select, textarea {
   font-size: 14px;
 }
 .form__price__box__calculation__input{
-  background-color: moccasin;
   width: 100%;
   .form__list{
-    background-color: lightsteelblue;
   }
   &__area{
-    background-color: lightgreen;
-    
     .input-price {
-      background-color: lightcoral;
       text-align: right;
       border: 1px solid #ccc;
       border-radius: 4px;
