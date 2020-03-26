@@ -1,0 +1,134 @@
+.hidden-content {
+  display: none;
+}
+
+.edit {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 70px 0 70px;
+  &__main {
+    max-width: 700px;
+    width: 100%;
+    margin: 0px auto;
+    background-color: white;
+      &__form {
+        position: relative;
+        }
+        &__content {
+          -webkit-box-align: center;
+          align-items: center;
+          -webkit-box-pack: center;
+          justify-content: center;
+          background-color: rgba(0, 0, 0, 0.6);
+          display: flex;
+          left: 0px;
+          min-height: 100vh;
+          position: fixed;
+          opacity: 0;
+          top: 0px;
+          visibility: hidden;
+          width: 100vw;
+          z-index: 10;
+          padding: 0px 16px;
+          transition: all 0.3s ease-out 0s;
+        }
+  }
+  &__footer {
+    padding: 40px 0px 41px;
+    margin-top: auto;
+    text-align: center;
+    &__inc {
+      font-size: 12px;
+    }
+  }
+}
+
+.form__image__box {
+  padding: 40px;
+  &__area {
+    height: 150px;
+    margin-top: 16px;
+    &--main {
+      height: 100%;
+      margin-top: 8px;
+      flex: 1 1 0%;
+      padding: 0px 4px;
+      align-content: center;
+      -webkit-box-align: center;
+      align-items: center;
+      background-color: rgb(245, 245, 245);
+      cursor: pointer;
+      display: flex;
+      flex-wrap: wrap;
+      -webkit-box-pack: center;
+      justify-content: center;
+      position: relative;
+      border-width: 1px;
+      border-style: dashed;
+      border-color: rgb(204, 204, 204);
+      border-image: initial;
+    }
+  }
+}
+.max-sheets {
+  margin-top: 16px;
+  font-size: 14px;
+  line-height: 1.4em;
+}
+
+.input-file {
+  height: 150px;
+  width: 620px;
+  display: none;
+}
+
+.fa.fa-star.likeIcon {
+  font-size: 20px;
+}
+
+.input-file-logo {
+  position: absolute;
+  font-size: 12px;
+  line-height: 1.4em;
+  text-align: center;
+  width: 100%;
+}
+
+.link-root {
+  width: 100%;
+  background-color: #ccc;
+  border-color: transparent;
+  color: #222;
+  margin-bottom: 40px;
+  font-size: 17px;
+  min-height: 48px;
+  padding: 0 24px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  font-weight: 600;
+}
+
+.form__detail__box__category__select__area1 {
+  margin-top: 16px;
+  position: relative;
+}
+
+.form__detail__box__category__select__area2, 
+.form__detail__box__category__select__area3 {
+  position: relative;
+}
+
+.arrow_edit {
+  width: 10px;
+  height: 10px;
+  border-top: 1px solid #888888;
+  border-right: 1px solid #888888;
+  display: inline-block;
+  transform: rotate(135deg);
+  position: absolute;
+  top: 0;
+  right: 20px;
+  bottom: 10px;
+  margin: auto;
+}
