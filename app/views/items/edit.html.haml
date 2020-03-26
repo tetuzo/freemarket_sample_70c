@@ -85,26 +85,6 @@
               .form__detail__box__category__select__area1
                 = f.select :parent_name, @category_parent_array, {selected:@item.category.parent.parent.name}, { class: 'select__sell', id: 'parent_category'}
                 .arrow_edit
-              -# .form__detail__box__category__select__area2
-              -#   = f.select :child_id, options_for_select(@category_children_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @item.category.parent.id}),{}, {class: 'select__sell', id: 'child_category'}
-              -#   .arrow_edit
-              -# .form__detail__box__category__select__area3
-              -#   = f.select :category_id, options_for_select(@category_grandchildren_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @item.category.id}),{}, {class: 'select__sell', id: 'grandchild_category'}
-              -#   .arrow_edit
-              -# .form__detail__box__category__select
-              -#   .form__detail__box__category__select__area
-              -#     = f.select :category_id, @category_parent_array, {}, {class: 'select__sell', id: 'parent_category', name: "category_id"}
-                -# .arrow
-            -# .form__detail__box__size
-            -#   .form__list
-            -#     .form__list__logo
-            -#       サイズ
-            -#     .form__list__label
-            -#       必須
-            -#   .form__detail__box__size__select
-            -#     .form__detail__box__size__select__area
-            -#       = f.collection_select :size_id, Size.all, :id, :name, {prompt: "選択してください"}, {class: 'select__sell'}
-            -#       .arrow
             .form__detail__box__brand
               .form__list
                 .form__list__logo
