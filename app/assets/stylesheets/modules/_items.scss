@@ -619,3 +619,35 @@ button, input, select, textarea {
   color: #fff;
   text-align: center;
 }
+
+.search_result {
+  height: 100%;
+  width: 100%;
+  &__contents {
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 60%;
+    &__box {
+      margin: 10px auto;
+      height: 200px;
+      width: 27%;
+      &__image {
+        height: 150px;
+        width: 100%;
+        .photo__small{
+          height: 100%;
+          width: 100%;
+          object-fit: cover; 
+        }
+      }
+      &__item-name {
+        padding-left: 2px;
+      }
+      &__item-price {
+        padding-left: 2px;
+      }
+    }  
+  }
+}

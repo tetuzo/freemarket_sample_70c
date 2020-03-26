@@ -1,5 +1,5 @@
 class Items::SearchesController < ApplicationController
   def index
-    @items = Item.search(params[:keyword]).limit(132)
+    @items = Item.search(params[:keyword])
   end
 end
