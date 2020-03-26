@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   before_action :set_item,            only: [:edit, :update, :show, :buy, :destroy]
   before_action :cate_map_error,      only: [:new, :create, :edit, :update]
 
+
   def show
     @images = Image.where(item_id: @item[:id]).limit(5)
     @user = User.find(@item[:seller_id])
