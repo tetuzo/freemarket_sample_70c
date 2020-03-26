@@ -27,7 +27,7 @@
                         .delete-btn
                           %span 削除
               .label-content
-                %label{for: "item_images_attributes_0_image", class: "label-box", id: "label-box--0"}
+                %label{for: "item_images_attributes_#{@item.images.count}_image", class: "label-box", id: "label-box--0"}
                   %pre.label-box__text-visible 
                     %i.fa.fa-camera.item_sell_cameraIcon
                     ドラッグアンドドロップ
@@ -38,6 +38,7 @@
                 = i.check_box:_destroy, class: "hidden-checkbox"
               - @item.images.length.upto(4) do |i|
                 %input{name: "item[images_attributes][#{i}][image]", id: "item_images_attributes_#{i}_image", class:"hidden-field", type:"file"}
+              = f.file_field :image, name: "item[images_attributes][#{@item.images.count}][image]", id: "item_images_attributes_#{@item.images.count}_image"
 
           %hr.devide
           .form__text__box
@@ -81,10 +82,19 @@
                   必須
                 - @item.errors.full_messages_for(:category_id).each do |message|
                   = message
-              .form__detail__box__category__select
-                .form__detail__box__category__select__area
-                  = f.select :category_id, @category_parent_array, {}, {class: 'select__sell', id: 'parent_category'}
-                .arrow
+              .form__detail__box__category__select__area1
+                = f.select :parent_name, @category_parent_array, {selected:@item.category.parent.parent.name}, { class: 'select__sell', id: 'parent_category'}
+                .arrow_edit
+              -# .form__detail__box__category__select__area2
+              -#   = f.select :child_id, options_for_select(@category_children_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @item.category.parent.id}),{}, {class: 'select__sell', id: 'child_category'}
+              -#   .arrow_edit
+              -# .form__detail__box__category__select__area3
+              -#   = f.select :category_id, options_for_select(@category_grandchildren_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @item.category.id}),{}, {class: 'select__sell', id: 'grandchild_category'}
+              -#   .arrow_edit
+              -# .form__detail__box__category__select
+              -#   .form__detail__box__category__select__area
+              -#     = f.select :category_id, @category_parent_array, {}, {class: 'select__sell', id: 'parent_category', name: "category_id"}
+                -# .arrow
             -# .form__detail__box__size
             -#   .form__list
             -#     .form__list__logo
@@ -166,7 +176,7 @@
             - @item.errors.full_messages_for(:price).each do |message|
               = message
             %p.explain
-              価格  (¥300~9,999,999)
+              価格  (¥300~¥9,999,999)
               = link_to '#' do
                 %i.far.fa-question-circle{class: 'question'}
             .form__price__box__calculation
@@ -184,17 +194,17 @@
               .form__price__box__comission
                 .form__price__box__comission__label
                   販売手数料 (10%)
-                %span{}ー
+                %span{}¥ -
               %hr.devide-total 
               .form__price__box__profit
                 .form__price__box__profit__label
                   販売利益
-                %span{}ー
+                %span{}¥ -
             .form__price__box__button
-              = f.submit '編集完了', class: 'draft'
+              = f.submit '更新する', class: 'draft'
               = link_to root_path, class: 'link-root' do
                 キャンセル
-                
+
             %p.terms
               禁止されている
               = link_to '#', class: 'link' do

@@ -37,7 +37,7 @@ $(function(){
     var parentCategory = document.getElementById('parent_category').value; //選択された親カテゴリーの名前を取得
     if (parentCategory != "選択してください"){ //親カテゴリーが初期値でないことを確認
       $.ajax({
-        url: 'search_child',
+        url: '/items/search_child',
         type: 'GET',
         data: { parent_name: parentCategory },
         dataType: 'json'
@@ -68,14 +68,14 @@ $(function(){
     var childId = $('#child_category option:selected').data('category'); //選択された子カテゴリーのidを取得
     if (childId != "選択してください"){ //子カテゴリーが初期値でないことを確認
       $.ajax({
-        url: 'search_grandchild',
+        url: '/items/search_grandchild',
         type: 'GET',
         data: { child_id: childId },
         dataType: 'json'
       })
       .done(function(grandchildren){
         if (grandchildren.length != 0) {
-          $('#grandchildren_wrapper').remove(); //子が変更された時、孫以下を削除するする
+          $('#grandchildren_wrapper').remove(); //子が変更された時、孫以下を削除する
           $('#size_wrapper').remove();
           $('#brand_wrapper').remove();
           var insertHTML = '';

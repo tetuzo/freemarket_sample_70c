@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function(){
+$(function(){
   $(function(){
     function buildHTML(count) {
       var html = `<div class="preview-box" id="preview-box__${count}">
@@ -33,7 +33,6 @@ $(document).on('turbolinks:load', function(){
     function setLabel() {
       var prevContent = $('.label-content').prev();
       labelWidth = (620 - $(prevContent).css('width').replace(/[^0-9]/g, ''));
-      console.log(prevContent);
       $('.label-content').css('width', labelWidth);
     }
     $(document).on('change', '.hidden-field', function() {
@@ -56,6 +55,11 @@ $(document).on('turbolinks:load', function(){
         if (count == 5) { 
           $('.label-content').hide();
         }
+
+        if ($(`#item_images_attributes_${id}__destroy`)){
+          $(`#item_images_attributes_${id}__destroy`).prop('checked',false);
+        } 
+
         setLabel();
         if(count < 5){
           $('.label-box').attr({id: `label-box--${count}`,for: `item_images_attributes_${count}_image`});
@@ -67,17 +71,29 @@ $(document).on('turbolinks:load', function(){
       setLabel(count);
       var id = $(this).attr('id').replace(/[^0-9]/g, '');
       $(`#preview-box__${id}`).remove();
-      console.log("new")
-      $(`#item_images_attributes_${id}_image`).val("");
-      var count = $('.preview-box').length;
-      if (count == 4) {
-        $('.label-content').show();
-      }
-      setLabel(count);
+      if ($(`#item_images_attributes_${id}__destroy`).length == 0) {
+        $(`#item_images_attributes_${id}_image`).val("");
+        $(`#item_images_attributes_${id}__destroy`).prop('checked',true);
+        var count = $('.preview-box').length;
+        if (count == 4) {
+          $('.label-content').show();
+        }
+        setLabel(count);
+        if(id < 5){
+          $('.label-box').attr({id: `label-box--${id}`,for: `item_images_attributes_${id}_image`});
+        }
+      } else {
 
-      if(id < 5){
-        $('.label-box').attr({id: `label-box--${id}`,for: `item_images_attributes_${id}_image`});
+        $(`#item_images_attributes_${id}__destroy`).prop('checked',true);
+        if (count == 4) {
+          $('.label-content').show();
+        }
+
+        setLabel();
+        if(id < 5){
+          $('.label-box').attr({id: `label-box--${id}`,for: `item_images_attributes_${id}_image`});
+        }
       }
     });
   });
-})
+});

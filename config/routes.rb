@@ -31,10 +31,11 @@ Rails.application.routes.draw do
   end
 
 
-  resources :items, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
+  resources :items do
     collection do
       get 'search_child', defaults: { format: 'json' }
       get 'search_grandchild', defaults: { format: 'json' }
+      get 'done', to: 'items#done', as: :done
     end
     member do
       patch 'buyer', to: 'items#buy'

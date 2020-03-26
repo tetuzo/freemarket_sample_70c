@@ -77,16 +77,6 @@
                 .form__detail__box__category__select__area
                   = f.select :category_id, @category_parent_array, {}, {class: 'select__sell', id: 'parent_category', name: "category_id"}
                 .arrow
-            -# .form__detail__box__size
-            -#   .form__list
-            -#     .form__list__logo
-            -#       サイズ
-            -#     .form__list__label
-            -#       必須
-            -#   .form__detail__box__size__select
-            -#     .form__detail__box__size__select__area
-            -#       = f.collection_select :size_id, Size.all, :id, :name, {prompt: "選択してください"}, {class: 'select__sell'}
-            -#       .arrow
             .form__detail__box__brand
               .form__list
                 .form__list__logo
@@ -158,7 +148,7 @@
             - @item.errors.full_messages_for(:price).each do |message|
               = message
             %p.explain
-              価格  (¥300~9,999,999)
+              価格  (¥300~¥9,999,999)
               = link_to '#' do
                 %i.far.fa-question-circle{class: 'question'}
             .form__price__box__calculation
@@ -176,15 +166,14 @@
               .form__price__box__comission
                 .form__price__box__comission__label
                   販売手数料 (10%)
-                %span{}ー
+                %span{}¥-
               %hr.devide-total 
               .form__price__box__profit
                 .form__price__box__profit__label
                   販売利益
-                %span{}ー
+                %span{}¥-
             .form__price__box__button
               = f.submit '出品する', class: 'draft'
-              = f.button '下書きに保存', class: 'exhibition'
               = link_to root_path, class: 'link-root' do
                 もどる
             %p.terms

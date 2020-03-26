@@ -99,9 +99,8 @@
       ピックアップカテゴリー
     .productBox
       .productHead
-        = link_to '#' do
-          %h3.title
-            新規投稿商品
+        %h3.title
+          新規投稿商品
       .productLists
         - @items.each do |item|
           - item.images.first(1).each do |image|
