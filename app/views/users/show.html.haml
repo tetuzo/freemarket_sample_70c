@@ -1,6 +1,8 @@
 .wrapper
   = render "posts/header"
-  
+.gretel
+  - breadcrumb :mypage
+  = breadcrumbs separator: " &rsaquo; "
 .wrapper_main
   .wrapper-my_page
     = render "users/side_bar"
