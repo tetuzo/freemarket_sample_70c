@@ -63,6 +63,27 @@ a{
         background-color: #ffffff;
         padding-right: 30px;
         padding-left: 30px;
+        .photo {
+          position: relative;
+          .sold {
+            width: 0;
+            height: 0;
+            border-top: 100px solid #ea352d ;
+            border-right: 100px solid transparent;
+            border-bottom: 100px solid transparent;
+            border-left: 100px solid #ea352d ;
+            z-index:100;
+            position: absolute;
+            &__inner{
+              transform: rotate(-45deg);
+              font-size: 48px;
+              margin:-55px 0px 0px -85px;
+              color: #fff;
+              letter-spacing: 2px;
+              font-weight: 600;
+            }
+          }
+        } 
         .photo__large{
           height: 400px;
           width: 590px;
