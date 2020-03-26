@@ -36,11 +36,9 @@ class ItemsController < ApplicationController
     end
   end
 
-  # あとで使用予定
-  # def done
-  #   # @item = Item.all
-  #   # @item = Item.find(params[:id])
-  # end
+  def done
+    @item = Item.where(seller_id: current_user).last(1)
+  end
 
   def edit
     Category.pluck(:id, :name)
