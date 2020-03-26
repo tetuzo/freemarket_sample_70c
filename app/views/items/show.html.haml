@@ -36,7 +36,7 @@
           %span (税込)
           %span 送料込み
         -# 出品者のみ情報編集ページへリンク
-        - if current_user.id != @item.seller_id
+        - if current_user&.id != @item.seller_id
           =link_to purchase_path, class: 'price__edit__delete--btn' do
             購入画面へ進む
         - else
