@@ -18,12 +18,17 @@
       %h2.item__box--name
         = @item.name
       %ul.item__box--photos
-        %li.photo__large
-          =image_tag @images[0].image.url, class: "photo__large"
+        %li.photo
+          = image_tag @images[0].image.url, class: "photo__large"
+            -if @item.buyer_id.present?
+            .sold 
+              .sold__inner
+                Sold
         .photo__small
           -@images.each_with_index do |image, i|
             -if i > 0
               =image_tag image.image.url, class: "photo__small--image"
+
       .item__box--price
         .item__price
           %span
@@ -32,19 +37,6 @@
         .price__info
           %span (税込)
           %span 送料込み
-        -# 出品者のみ情報編集ページへリンク
-        - if current_user&.id != @item.seller_id
-          =link_to purchase_path, class: 'price__edit__delete--btn' do
-            購入画面へ進む
-        - else
-          =link_to '#', class: 'price__edit__delete--btn' do
-            情報編集画面へ進む
-          = link_to item_path, class: 'price__edit__delete--btn',onclick: "clickEvent()", method: :delete do
-            商品情報を削除する
-            :javascript
-              function clickEvent() {
-                alert( "商品情報を削除します" );
-              }
       .item__box--detals
         = @item.discription
 
