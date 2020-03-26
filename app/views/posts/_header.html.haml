@@ -7,9 +7,9 @@
       .searchBox
         =form_with url: items_searches_path, local: true, method: :get, class: "searchBox-form" do |f|
           =f.text_field :keyword, placeholder: "キーワードで探す", class: "searchBox-input"
-          =f.submit " ", class: "search-btn"
-          .searchBox-icon
-            = image_tag "/images/icon/icon-search 1.png", class: 'search_icon'
+          %button{type: "submit", class: "search-btn"} 
+            %i.fa.fa-search
+      
     .nav
       %ul.listsLeft
         %li.listsLeft__item.listsLeft__item--first
