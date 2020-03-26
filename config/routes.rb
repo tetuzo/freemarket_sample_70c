@@ -28,8 +28,11 @@ Rails.application.routes.draw do
       post '/:id', to: 'purchase#pay' 
       get 'done/:id', to: 'purchase#done', as: :done
     end
-  end
+  end  
 
+  namespace :items do
+    resources :searches, only: :index
+  end
 
   resources :items do
     collection do
@@ -42,4 +45,5 @@ Rails.application.routes.draw do
       get 'buyer', to: 'items#buy'
     end
   end
+  
 end

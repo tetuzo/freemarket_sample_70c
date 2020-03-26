@@ -1,0 +1,19 @@
+.wrapper
+  = render "posts/header"
+.search_result
+  .search_result__contents
+    -@items.each do |item|
+      .search_result__contents__box
+        .search_result__contents__box__image
+          =link_to item_path(item.id) do
+            = image_tag item.images[0].image.url, class: "photo__small"
+        .search_result__contents__box__item-name
+          商品名
+          = item.name
+        .search_result__contents__box__item-price
+          価格
+          = item.price
+          円
+ 
+.wrapper
+  = render "devise/registrations/footer"

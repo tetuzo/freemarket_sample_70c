@@ -162,16 +162,18 @@
                   ¥
                 .form__price__box__calculation__input__area
                   .form__price__box__calculation__input__area__field
-                    = f.number_field :price, class: 'input-price', placeholder: '0'
+                    = f.number_field :price, class: 'input-price', id: 'show_price_input',placeholder: '0'
               .form__price__box__comission
                 .form__price__box__comission__label
                   販売手数料 (10%)
-                %span{}¥-
+                %span.price__comission--put
+
               %hr.devide-total 
               .form__price__box__profit
                 .form__price__box__profit__label
                   販売利益
-                %span{}¥-
+                %span.price__profit--put
+
             .form__price__box__button
               = f.submit '出品する', class: 'draft'
               = link_to root_path, class: 'link-root' do
