@@ -5,8 +5,13 @@
     -@items.each do |item|
       .search_result__contents__box
         .search_result__contents__box__image
+          -if item.buyer_id.present?
+            .sold 
+              .sold__inner
+                Sold
           =link_to item_path(item.id) do
             = image_tag item.images[0].image.url, class: "photo__small"
+            
         .search_result__contents__box__item-name
           商品名
           = item.name

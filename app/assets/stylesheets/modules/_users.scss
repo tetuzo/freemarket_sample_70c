@@ -167,17 +167,20 @@
           position: relative;
           list-style: none;
           text-decoration: none;
+          
 
           &__user-box{
             padding: 0 319px;
 
             &__icon{
-    // background-image: url();に変更
-              background-color: seagreen;
               width: 60px;
               height: 60px;
               border-radius: 50%;
               overflow: hidden;
+              background-image: url(/images/pict/封印されしエクゾディア.jpg);
+              background-size: cover;
+              background-repeat: no-repeat;
+              background-position: center;
             }
           }
 
